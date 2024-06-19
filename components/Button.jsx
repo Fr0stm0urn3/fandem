@@ -4,9 +4,9 @@ const Button = ({ btn, arrowColor }) => {
       className={`flex gap-3 justify-center items-center text-[18px] group font-bold rounded-[10px] py-3 px-6 ${
         btn.textColor
       } ${btn.bgColor} ${btn.mb} ${btn.wFull ? "w-full" : btn.px6} ${btn.mx}
-        hover:${btn.hoverBg} hover:${btn.hoverText}  ${btn.activeBg}  ${btn.activeText} 
-      
-      `}
+        ${btn.hoverBg} ${btn.hoverText}  ${btn.activeBg}  ${btn.activeText} 
+      ${btn.className}
+        `}
     >
       {btn.content}
       <span>

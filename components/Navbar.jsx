@@ -16,7 +16,6 @@ const Navbar = () => {
   useEffect(() => {
     const childElement = document.querySelector("#hamburgerMenu")
 
-    console.log(childElement)
     if (childElement) {
       const parentElement = childElement.parentElement
 
@@ -33,14 +32,9 @@ const Navbar = () => {
       setWidth(window.innerWidth)
     }
 
-    // Add event listener
     window.addEventListener("resize", handleResize)
 
-    // Call handler right away so state gets updated with initial window size
     handleResize()
-
-    // Remove event listener on cleanup
-    console.log(width)
 
     if (width >= 1024) {
       setIsMobileMenuOpen(false)
@@ -465,8 +459,8 @@ const Navbar = () => {
               px6: "px-6",
               mx: "mx-4",
               mb: "mb-10",
-              hoverBg: "bg-[#FFA800]",
-              hoverText: "text-white",
+              hoverBg: "hover:bg-[#FFA800]",
+              hoverText: "hover:text-white",
               activeBg: "active:bg-[#D69516]",
               activeText: "active:[#fff]",
               hoverArrowColor: "hover:bg-[#FFFFFF]",
