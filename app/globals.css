@@ -35,21 +35,23 @@ body {
 
 /* @media (min-width: 768px) {
   body {
-    background: url("../public/assets/images/HeroBackgroundImage.png");
+    background: url("../public/assets/images/HeroBackgroundImage.png"),
+      url("../public/assets/images/LooperGroup.png");
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: cover;
-    background-position: 100% 20px;
-    background-size: 694.13px;
+    background-position: 100% 210px, 100% 1000px;
+    background-size: 694.13px, 783.43px;
   }
 }
 @media (max-width: 768px) {
   body {
-    background: url("../public/assets/images/HeroBackgroundImage.png");
+    background: url("../public/assets/images/HeroBackgroundImage.png"),
+      url("../public/assets/images/LooperGroup.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-position: 100% 480px;
-    background-size: 569px;
+    background-position: 100% 450px, 150% 1450px;
+    background-size: 569px, 478.14px;
   }
 } */
