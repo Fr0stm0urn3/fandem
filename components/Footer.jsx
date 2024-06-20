@@ -328,7 +328,7 @@ const Footer = () => {
         gWidthHeight={38}
         className={"flex justify-center gap-6 mt-[41px] lg:mt-[31px]"}
       />
-      <div className="flex justify-center mt-[25px] lg:mt-[21px] mb-[16px] lg:mb-5 text-[#565656] text-[14px]">
+      <div className="flex justify-center mt-[25px] lg:mt-[21px] mb-4 lg:mb-5 text-[#565656] text-[14px] font-mono">
         &copy; {year} Fandem, All Rights Reserved
       </div>
     </footer>

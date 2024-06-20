@@ -34,6 +34,14 @@ body {
   }
 }
 
+.footerCard {
+  background-blend-mode: overlay, overlay, normal;
+  box-shadow: 0px 16px 100px 0px #181818;
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.37);
+  background-blend-mode: overlay, overlay, normal;
+}
+
 /* @media (min-width: 768px) {
   body {
     background: url("../public/assets/images/HeroBackgroundImage.png"),
