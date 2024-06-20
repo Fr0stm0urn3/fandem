@@ -11,22 +11,22 @@ const OurProjects = () => {
   const totalItems = 9
 
   return (
-    <section className="flex flex-col justify-center items-center mb-[168px] lg:mb-[243px]">
+    <section className="flex flex-col justify-center items-center mb-[168px] lg:mb-[243px]container mx-auto px-4 z-10">
       <MiniTitle title={"Building The Future"} />
-      <h2 className="text-[40px] lg:text-[50px] font-[500] leading-[65px] mb-10 lg:mb-20">
+      <h2 className="text-[40px] lg:text-[50px] font-[500] leading-[65px] mb-10 lg:mb-20 z-10">
         Our Projects
       </h2>
-      <div className="flex flex-col justify-center items-center gap-[48px] lg:flex-row lg:space-y-0 lg:justify-between lg:gap-32">
-        <div className="flex flex-col justify-center items-center space-y-4 ">
+      <div className="flex flex-col justify-center items-center gap-[48px] lg:flex-row lg:space-y-0 lg:justify-between lg:gap-32 mx-auto container">
+        <div className="flex flex-col items-center justify-center space-y-4 lg:flex-row lg:gap-6 z-10">
           <Image
             alt="Box"
             sizes="100vw"
             height={0}
             width={0}
             src={boxingImg}
-            className="mb-[6.3px]"
+            className="mb-[6.3px] z-10"
           />
-          <span className="flex items-center">
+          <span className="lg:self-end flex z-10">
             <button
               className="cursor-pointer group"
               onClick={() => setItem((prev) => prev - 1)}
@@ -81,7 +81,7 @@ const OurProjects = () => {
             </button>
           </span>
         </div>
-        <div className="self-start lg:self-center">
+        <div className="self-start ml-2 md:ml-24 lg:ml-0 lg:self-center z-10">
           <h4 className="text-[30px] font-[500]">GLORY Smacks</h4>
           <p className=" leading-[27.2px] text-[#BEBEBE] w-[350px] lg:w-[400px] mt-3 lg:mt-4 mb-8 lg:mb-10">
             The first full NFT marketplace for a combat sports league, utilizing the
@@ -89,7 +89,7 @@ const OurProjects = () => {
           </p>
           <button
             className="flex gap-3 justify-center items-center text-[18px] group font-bold rounded-[10px] py-3 px-6 text-[#1B1A1A] bg-[#FFFFFF] 
-      hover:bg-[#FFA800] hover:text-white  active:bg-[#D69516]  active:[#fff] transition"
+      hover:bg-[#FFA800] hover:text-white active:bg-[#D69516] active:[#fff] transition"
           >
             Learn More
             <span>
@@ -99,7 +99,7 @@ const OurProjects = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className={`fill-[#1B1A1A] group-hover:fill-[#fff] `}
+                className={`fill-[#1B1A1A] group-hover:fill-[#fff] group-hover:-translate-y-0.5 group-hover:scale-125 transition-transform duration-500`}
               >
                 <path
                   d="M8 7C8 6.44772 8.44772 6 9 6L17 6C17.5523 6 18 6.44772 18 7V15C18 15.5523 17.5523 16 17 16C16.4477 16 16 15.5523 16 15V9.41421L7.70711 17.7071C7.31658 18.0976 6.68342 18.0976 6.29289 17.7071C5.90237 17.3166 5.90237 16.6834 6.29289 16.2929L14.5858 8L9 8C8.44772 8 8 7.55228 8 7Z"
