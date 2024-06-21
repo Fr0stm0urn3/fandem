@@ -13,7 +13,7 @@ import darkBlur from "../public/assets/images/Ellipse 14_35.png"
 import headerFooterImg from "../public/assets/images/Line.png"
 import vector3 from "../public/assets/images/Vector 3.png"
 
-const BackgroundImages = () => {
+const HomePageBackgroundImages = () => {
   return (
     <>
       <Image
@@ -138,4 +138,4 @@ const BackgroundImages = () => {
   )
 }
 
-export default BackgroundImages
+export default HomePageBackgroundImages

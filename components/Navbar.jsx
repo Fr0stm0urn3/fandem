@@ -47,7 +47,7 @@ const Navbar = () => {
   return (
     <>
       {!isMobileMenuOpen ? (
-        <nav className="container mx-auto font-[gilroy] flex justify-between items-center pt-8 px-4 lg:px-[135px]">
+        <nav className="container mx-auto font-[gilroy] flex justify-between items-center pt-8 px-4 lg:px-0">
           <Link href={"/"}>
             <Image
               alt="Logo"
@@ -63,7 +63,7 @@ const Navbar = () => {
             <Link href={"/products"} className={``}>
               <li className="text-[#BDBDBD] hover:text-[#FFA800] transition">Products</li>
             </Link>
-            <Link href={"/products"} className={``}>
+            <Link href={"/blog"} className={``}>
               <li className="text-[#BDBDBD] hover:text-[#FFA800] transition">Blog</li>
             </Link>
             <Link href={"/products"} className={``}>

@@ -7,8 +7,8 @@ const Footer = () => {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="container mx-auto font-[gilroy] text-[#949494] px-4 lg:px-[135px]">
-      <div className="flex flex-col lg:flex-row justify-between items-center mb-10  lg:mb-[28.93px]">
+    <footer className="container mx-auto font-[gilroy] text-[#949494] px-4 lg:px-[135px] pt-[30px]">
+      <div className="flex flex-col lg:flex-row justify-between items-center mb-10  lg:mb-[28.93px] ">
         <Link href={"/"} className="block lg:hidden mb-[22.93px] ml-[112px] mr-[94.89px]">
           <Image
             alt="Logo"
