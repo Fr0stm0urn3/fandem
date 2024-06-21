@@ -3,7 +3,7 @@ import Link from "next/link"
 const GoBackToBlog = () => {
   return (
     <Link
-      className="container mx-auto flex items-center gap-[10px] text-[#1B1A1A] text-[14px] mt-[24px] lg:mt-[53px] mb-8 lg:mb-10 px-4 lg:px-0"
+      className="container mx-auto flex items-center gap-[10px] text-[#1B1A1A] text-[14px] mt-[24px] lg:mt-[53px] mb-8 lg:mb-10 px-4 "
       href={"/blog"}
     >
       <span>
