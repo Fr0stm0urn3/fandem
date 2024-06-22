@@ -7,12 +7,16 @@ import logo from "@/public/assets/images/LogoFandem.svg"
 import Button from "./Button"
 import SocialMedias from "./SocialMedias"
 import ArrowTopRightButton from "./ArrowTopRightButton"
+import { useParams } from "next/navigation"
+import logoDark from "../public/assets/images/LogoDark.png"
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [width, setWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 0
   )
+
+  const { id } = useParams()
 
   useEffect(() => {
     const childElement = document.querySelector("#hamburgerMenu")
@@ -47,51 +51,72 @@ const Navbar = () => {
   return (
     <>
       {!isMobileMenuOpen ? (
-        <nav className="container mx-auto font-[gilroy] flex justify-between items-center pt-8 px-4 lg:px-0">
-          <Link href={"/"}>
-            <Image
-              alt="Logo"
-              sizes="100vw"
-              height={0}
-              width={0}
-              src={logo}
-              priority
-              className="lg:w-[183px] lg:h-[52px]"
-            />
-          </Link>
-          <ul className="list-none lg:flex justify-center items-center space-x-10 hidden">
-            <Link href={"/products"} className={``}>
-              <li className="text-[#BDBDBD] hover:text-[#FFA800] transition">Products</li>
+        <nav className={`${id ? "bg-[#fff]" : "bg-black"}`}>
+          <div className="container mx-auto font-[gilroy] flex justify-between items-center pt-8 px-4 lg:px-0">
+            <Link href={"/"}>
+              <Image
+                alt="Logo"
+                sizes="100vw"
+                height={0}
+                width={0}
+                src={id ? logoDark : logo}
+                priority
+                className="lg:w-[183px] lg:h-[52px]"
+              />
             </Link>
-            <Link href={"/blog"} className={``}>
-              <li className="text-[#BDBDBD] hover:text-[#FFA800] transition">Blog</li>
-            </Link>
-            <Link href={"/products"} className={``}>
-              <li className="text-[#BDBDBD] hover:text-[#FFA800] transition">Careers</li>
-            </Link>
-          </ul>
+            <ul className="list-none lg:flex justify-center items-center space-x-10 hidden">
+              <Link href={"/products"} className={``}>
+                <li
+                  className={`hover:text-[#FFA800] transition ${
+                    id ? "text-[#1B1A1A] " : "text-[#BDBDBD]"
+                  }`}
+                >
+                  Products
+                </li>
+              </Link>
+              <Link href={"/blog"} className={``}>
+                <li
+                  className={`hover:text-[#FFA800] transition ${
+                    id ? "text-[#1B1A1A] " : "text-[#BDBDBD]"
+                  }`}
+                >
+                  Blog
+                </li>
+              </Link>
+              <Link href={"/products"} className={``}>
+                <li
+                  className={`hover:text-[#FFA800] transition ${
+                    id ? "text-[#1B1A1A] " : "text-[#BDBDBD]"
+                  }`}
+                >
+                  Careers
+                </li>
+              </Link>
+            </ul>
 
-          <ArrowTopRightButton
-            content="Contact Us"
-            href={"/contact"}
-            className={"hidden lg:block"}
-          />
-          <button
-            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            className="block lg:hidden"
-          >
-            <svg
-              width="32"
-              height="15"
-              viewBox="0 0 32 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <ArrowTopRightButton
+              content="Contact Us"
+              href={"/contact"}
+              className={`hidden lg:flex ${id ? "text-[#1B1A1A]" : "text-[#FFF]"}`}
+              svgColor={`${id ? "#1B1A1A" : "#FFF"}`}
+            />
+            <button
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              className="block lg:hidden"
             >
-              <rect width="32" height="3" fill="white" />
-              <rect y="6" width="32" height="3" fill="white" />
-              <rect y="12" width="32" height="3" fill="white" />
-            </svg>
-          </button>
+              <svg
+                width="32"
+                height="15"
+                viewBox="0 0 32 15"
+                fill="white"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect width="32" height="3" fill={id ? "#1B1A1A" : "#FFF"} />
+                <rect y="6" width="32" height="3" fill={id ? "#1B1A1A" : "#FFF"} />
+                <rect y="12" width="32" height="3" fill={id ? "#1B1A1A" : "#FFF"} />
+              </svg>
+            </button>
+          </div>
         </nav>
       ) : (
         <div

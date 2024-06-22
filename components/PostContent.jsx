@@ -175,8 +175,8 @@ const PostContent = () => {
                   y2="-11.8208"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#201F20" />
-                  <stop offset="0.609375" stop-color="white" />
+                  <stop stopColor="#201F20" />
+                  <stop offset="0.609375" stopColor="white" />
                 </linearGradient>
               </defs>
             </svg>
@@ -209,8 +209,8 @@ const PostContent = () => {
                   y2="-11.8208"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#201F20" />
-                  <stop offset="0.609375" stop-color="white" />
+                  <stop stopColor="#201F20" />
+                  <stop offset="0.609375" stopColor="white" />
                 </linearGradient>
               </defs>
             </svg>
@@ -243,8 +243,8 @@ const PostContent = () => {
                   y2="-11.8208"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#201F20" />
-                  <stop offset="0.609375" stop-color="white" />
+                  <stop stopColor="#201F20" />
+                  <stop offset="0.609375" stopColor="white" />
                 </linearGradient>
               </defs>
             </svg>
@@ -265,7 +265,7 @@ const PostContent = () => {
                 rx="19"
                 fill="url(#paint0_linear_1_1708)"
               />
-              <g clip-path="url(#clip0_1_1708)">
+              <g clipPath="url(#clip0_1_1708)">
                 <path
                   d="M29.995 30V29.9991H30V22.6641C30 19.0758 29.2275 16.3116 25.0324 16.3116C23.0158 16.3116 21.6624 17.4183 21.1099 18.4675H21.0516V16.6466H17.0741V29.9991H21.2158V23.3875C21.2158 21.6466 21.5458 19.9633 23.7016 19.9633C25.8258 19.9633 25.8574 21.95 25.8574 23.4991V30H29.995Z"
                   fill="white"
@@ -285,8 +285,8 @@ const PostContent = () => {
                   y2="-16.7583"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#201F20" />
-                  <stop offset="0.609375" stop-color="white" />
+                  <stop stopColor="#201F20" />
+                  <stop offset="0.609375" stopColor="white" />
                 </linearGradient>
                 <clipPath id="clip0_1_1708">
                   <rect
