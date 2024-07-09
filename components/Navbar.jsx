@@ -41,19 +41,38 @@ const Navbar = () => {
 
     handleResize()
 
-    if (width >= 1024) {
-      setIsMobileMenuOpen(false)
+    const childElement = document.querySelector("#hamburgerMenu")
+
+    if (childElement) {
+      const parentElement = childElement.parentElement
+
+      if (width >= 1024) {
+        setIsMobileMenuOpen(false)
+        parentElement.classList.remove("hideScrollbar")
+      }
     }
 
     return () => window.removeEventListener("resize", handleResize)
-  }, [width])
+  }, [width, isMobileMenuOpen])
+
+  const removeAbsoluteClassUponClickingOnALink = () => {
+    const childElement = document.querySelector("#hamburgerMenu")
+
+    if (childElement) {
+      const parentElement = childElement.parentElement
+
+      parentElement.classList.remove("hideScrollbar")
+
+      setIsMobileMenuOpen(false)
+    }
+  }
 
   return (
     <>
       {!isMobileMenuOpen ? (
         <nav className={`${id ? "bg-[#fff]" : "bg-black"}`}>
           <div className="container mx-auto font-[gilroy] flex justify-between items-center pt-8 px-4 lg:px-0">
-            <Link href={"/"}>
+            <Link href={"/"} onClick={removeAbsoluteClassUponClickingOnALink}>
               <Image
                 alt="Logo"
                 sizes="100vw"
@@ -126,7 +145,16 @@ const Navbar = () => {
           <div className="flex items-center ">
             <span
               className="cursor-pointer absolute left-0 pl-4 group"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setIsMobileMenuOpen(false)
+                const childElement = document.querySelector("#hamburgerMenu")
+
+                if (childElement) {
+                  const parentElement = childElement.parentElement
+
+                  parentElement.classList.remove("hideScrollbar")
+                }
+              }}
             >
               <svg
                 className="hover:scale-125 transition duration-300 "
@@ -159,18 +187,30 @@ const Navbar = () => {
                 height={"157px"}
                 className="cursor-pointer"
                 src={logo}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={removeAbsoluteClassUponClickingOnALink}
               />
             </Link>
           </div>
           <ul className="text-[30px] font-[500] mt-[91.59px] flex flex-col space-y-4 self-start">
-            <Link href={"/products"} className="hover:text-[#FFA800] transition">
+            <Link
+              href={"/products"}
+              className="hover:text-[#FFA800] transition"
+              onClick={removeAbsoluteClassUponClickingOnALink}
+            >
               <li>Products</li>
             </Link>
-            <Link href={"/blog"} className="hover:text-[#FFA800] transition">
+            <Link
+              href={"/blog"}
+              className="hover:text-[#FFA800] transition"
+              onClick={removeAbsoluteClassUponClickingOnALink}
+            >
               <li>Blog</li>
             </Link>
-            <Link href={"/careers"} className="hover:text-[#FFA800] transition">
+            <Link
+              href={"/careers"}
+              className="hover:text-[#FFA800] transition"
+              onClick={removeAbsoluteClassUponClickingOnALink}
+            >
               <li>Careers</li>
             </Link>
           </ul>
@@ -477,6 +517,7 @@ const Navbar = () => {
               hoverArrowColor: "hover:bg-[#FFFFFF]",
               arrowColor: "fill-[#1B1A1A]",
               arrowHover: "group-hover:fill-[#1B1A1A]",
+              className: "transaction duration-300",
             }}
           />
         </div>

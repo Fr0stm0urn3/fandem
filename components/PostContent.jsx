@@ -9,7 +9,7 @@ const PostContent = () => {
     <section className="container mx-auto text-[#1B1A1A] px-4 lg:px-[100px] flex flex-col items-center">
       <div>
         <div className="my-10">
-          <h4 className="text-[30px] w-[343px] md:w-full md:text-[40px] md:font-[500] leading-[48px]">
+          <h4 className="text-[30px] w-[343px] md:w-full md:text-[40px] md:font-[500] leading-[30px] lg:leading-[48px]">
             Lorem ipsum dolor sit amet.
           </h4>
           <p className="text-[#555] w-[450px] md:w-[700px] lg:w-[800px] xl:w-[990px] mt-5 mb-4 leading-[27.2px]">

@@ -6,7 +6,7 @@ import heroImgSm from "../public/assets/images/image 1297 (1).png"
 const NFTHero = () => {
   return (
     <header className="container mx-auto px-4 lg:px-[100px] flex flex-col items-center">
-      <div>
+      <div className="mx-auto lg:w-[1000px] lg:pr-28 xl:pr-0">
         <h1 className="text-[#1B1A1A] text-[40px] lg:text-[54px] font-[500] leading-[62px]  w-[423px] md:w-[650px] lg:w-[927px]">
           Explained: What are NFTs and how you can invest safely
         </h1>
@@ -31,7 +31,7 @@ const NFTHero = () => {
           height={0}
           width={0}
           src={heroImg}
-          className="hidden md:block"
+          className="hidden md:block "
         />
         <Image
           priority
