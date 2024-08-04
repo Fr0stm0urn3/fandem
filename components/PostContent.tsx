@@ -1,10 +1,11 @@
+import React from "react"
 import Image from "next/image"
 import postContentImgOne from "../public/assets/images/image 1298.png"
 import postContentImgOneMobile from "../public/assets/images/image 1298 (1).png"
 import postContentImgTwo from "../public/assets/images/image 1299.png"
 import postContentImgTwoMobile from "../public/assets/images/image 1299 (1).png"
 
-const PostContent = () => {
+const PostContent = async () => {
   return (
     <section className="container mx-auto text-[#1B1A1A] px-4 lg:px-[100px] flex flex-col items-center">
       <div>

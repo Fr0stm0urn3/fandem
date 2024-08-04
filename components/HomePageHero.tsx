@@ -17,7 +17,38 @@ const TEXTS = [
 ]
 
 const HomePageHero = () => {
+  // console.log(getPosts)
+
+  // const notion = new Client({ auth: process.env.NOTION_API_KEY })
+
   const [index, setIndex] = useState(0)
+
+  // const [items, setItems] = useState([])
+  // const [loading, setLoading] = useState(true)
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await fetch(
+  //         "https://www.notion.so/ea8786b08efe4b44ab571a4c8405d9a9?v=a87c69ffbf664be5bca435ec6598198b"
+  //       )
+
+  //       if (res.status !== 200) {
+  //         throw new Error("Failed to fetch the data...")
+  //       }
+
+  //       const data = await res.json()
+  //       setItems(data)
+  //     } catch (error) {
+  //       console.log(error)
+  //     } finally {
+  //       setLoading(false)
+  //     }
+  //   }
+  //   fetchData()
+  // }, [])
+
+  // console.log(items)
 
   useEffect(() => {
     const interValId = setInterval(() => setIndex((index) => index + 1), 200000)

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import logo from "@/public/assets/images/LogoFandem.svg"
+import logo from "../public/assets/images/LogoFandem.svg"
 import Button from "./Button"
 import SocialMedias from "./SocialMedias"
 import ArrowTopRightButton from "./ArrowTopRightButton"
@@ -11,6 +11,8 @@ import { useParams } from "next/navigation"
 import logoDark from "../public/assets/images/LogoDark.png"
 
 const Navbar = () => {
+  const [items, setItems] = useState([])
+  const [loading, setLoading] = useState(true)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [width, setWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 0
@@ -25,9 +27,9 @@ const Navbar = () => {
       const parentElement = childElement.parentElement
 
       if (isMobileMenuOpen) {
-        parentElement.classList.add("hideScrollbar")
+        parentElement?.classList.add("hideScrollbar")
       } else {
-        parentElement.classList.remove("hideScrollbar")
+        parentElement?.classList.remove("hideScrollbar")
       }
     }
   }, [isMobileMenuOpen])
@@ -48,7 +50,7 @@ const Navbar = () => {
 
       if (width >= 1024) {
         setIsMobileMenuOpen(false)
-        parentElement.classList.remove("hideScrollbar")
+        parentElement?.classList.remove("hideScrollbar")
       }
     }
 
@@ -61,7 +63,7 @@ const Navbar = () => {
     if (childElement) {
       const parentElement = childElement.parentElement
 
-      parentElement.classList.remove("hideScrollbar")
+      parentElement?.classList.remove("hideScrollbar")
 
       setIsMobileMenuOpen(false)
     }
@@ -152,7 +154,7 @@ const Navbar = () => {
                 if (childElement) {
                   const parentElement = childElement.parentElement
 
-                  parentElement.classList.remove("hideScrollbar")
+                  parentElement?.classList.remove("hideScrollbar")
                 }
               }}
             >
@@ -183,8 +185,8 @@ const Navbar = () => {
                 alt="Logo"
                 priority
                 sizes="100vw"
-                width={"45px"}
-                height={"157px"}
+                width={"45"}
+                height={"157"}
                 className="cursor-pointer"
                 src={logo}
                 onClick={removeAbsoluteClassUponClickingOnALink}

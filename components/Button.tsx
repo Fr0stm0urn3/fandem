@@ -1,4 +1,4 @@
-const Button = ({ btn, arrowColor }) => {
+const Button = ({ btn, arrowColor }: any) => {
   return (
     <button
       className={`flex gap-3 justify-center items-center text-[18px] group font-bold rounded-[10px] py-3 px-6 ${

@@ -1,6 +1,19 @@
+import React from "react"
 import Link from "next/link"
 
-const ArrowTopRightButton = ({ content, href, className, svgColor }) => {
+type ArrowTopRightButtonProps = {
+  content: string
+  href: string
+  className?: string
+  svgColor?: string
+}
+
+const ArrowTopRightButton: React.FC<ArrowTopRightButtonProps> = ({
+  content,
+  href,
+  className,
+  svgColor,
+}) => {
   return (
     <Link
       href={href}

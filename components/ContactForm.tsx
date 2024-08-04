@@ -1,9 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState, ChangeEvent, FormEvent } from "react"
 import MiniTitle from "./MiniTitle"
 
-const ContactForm = () => {
+const ContactForm: React.FC = () => {
   const [isEmailValid, setIsEmailValid] = useState(true)
   const [emailValue, setEmailValue] = useState("")
   const [isFullNameValid, setIsFullNameValid] = useState(true)
@@ -11,17 +11,15 @@ const ContactForm = () => {
   const [isMessageValid, setIsMessageValid] = useState(true)
   const [messageValue, setMessageValue] = useState("")
 
-  const handleFullNameChange = (e) => {
+  const handleFullNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
 
     setFullNameValue(value)
 
-    // console.log(value.replace(/[\W]/g, " ").split(" ").length)
-
     setIsFullNameValid(value.replace(/[\W]/g, " ").split(" ").length >= 2)
   }
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
 
     setEmailValue(value)
@@ -29,19 +27,19 @@ const ContactForm = () => {
     setIsEmailValid(value.includes("@"))
   }
 
-  const handleMessageChange = (e) => {
+  const handleMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = e.target
 
     setMessageValue(value)
-    setIsMessageValid(messageValue)
+    setIsMessageValid(!!value.trim())
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     if (!fullNameValue) {
       setIsFullNameValid(false)
     }
-    if (!emailValue || !emailValue.split("").includes("@")) {
+    if (!emailValue || !emailValue.includes("@")) {
       setIsEmailValid(false)
     }
     if (!messageValue) {
@@ -99,7 +97,6 @@ const ContactForm = () => {
             Message:
           </label>
           <textarea
-            type="text"
             id="message"
             name="message"
             className="rounded-[10px] border border-[#b7b7b7] border-opacity-30 bg-[#fff] bg-opacity-0 h-[120px] text-white p-4 focus:outline-none font-[gilroy]"

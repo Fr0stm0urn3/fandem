@@ -1,5 +1,3 @@
-import React from "react"
-
 const BlogPageHero = () => {
   return (
     <header className="container mx-auto  mt-[46px] lg:mt-[111px] px-4 lg:px-0">

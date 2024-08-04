@@ -1,4 +1,4 @@
-import logo from "@/public/assets/images/LogoFandem.svg"
+import logo from "../public/assets/images/LogoFandem.svg"
 import Image from "next/image"
 import Link from "next/link"
 import SocialMedias from "./SocialMedias"
