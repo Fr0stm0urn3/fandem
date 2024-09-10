@@ -9,13 +9,25 @@ import Image from "next/image"
 import cardImg from "../public/assets/images/image 49.png"
 import Spinner from "./Spinner"
 
-const hl = [
-  "http://localhost:3000/blog/Explained,%20What%20Are%20NFTs,%20Learn%20to%20Invest%20Securely",
-  "http://localhost:3000/blog/Explained,%20What%20Are%20NFTs:%20Learn%20to%20Invest%20Securely",
-]
+type Feed = {
+  image: string
+}
+
+type Item = {
+  title: string
+  content: string
+  person: {
+    name: string
+    createdAt: string
+  }
+  author: string
+  pubDate: string
+  categories: [string]
+}
 
 const BlogAndArticles = () => {
-  const [posts, setPosts] = useState([])
+  const [items, setItems] = useState<{ items: Item[] }>({ items: [] })
+  const [feed, setFeed] = useState<Feed | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -30,7 +42,8 @@ const BlogAndArticles = () => {
         }
 
         const data = await res.json()
-        setPosts(data)
+        setItems(data)
+        setFeed(data.feed)
       } catch (error) {
         console.log(error)
       } finally {
@@ -67,18 +80,18 @@ const BlogAndArticles = () => {
       >
         {/* Card 1 */}
         <Link
-          href={`/blog/${posts.items[0].title.replaceAll(":", ",")}`}
+          href={`/blog/${items.items[0].title.replaceAll(":", ",")}`}
           className="w-[370px] h-[474px] border border-[#888888] rounded-[10px]"
         >
           <div className="flex flex-col p-[20px] lg:p-[34px] mx-auto ">
             <h5 className="text-[18px] font-[600] text-[#BEBEBE]">Beige</h5>
             <h4 className="w-[354px] lg:w-[302px] mb-4 mt-[43px] font-[500] text-[30px]">
-              {posts.items[0].title}
+              {items.items[0].title}
             </h4>
             <p
               className="leading-[27.2px] text-[#BEBEBE]"
               dangerouslySetInnerHTML={{
-                __html: posts.items[0].content.slice(170, 304),
+                __html: items.items[0].content.slice(170, 304),
               }}
             ></p>
             <div className="border border-[#494949] mt-[64px] mb-5 lg:mt-[63px] lg:mb-[14px]" />
@@ -90,10 +103,10 @@ const BlogAndArticles = () => {
                   width={32}
                   height={32}
                   alt="Person"
-                  src={posts.feed.image}
+                  src={feed!.image}
                   priority
                 />
-                <span className="text-[#BEBEBE]">{posts.items[0].author}</span>
+                <span className="text-[#BEBEBE]">{items.items[0].author}</span>
               </div>
 
               <div className="text-[#565656]">5 min read</div>
@@ -141,18 +154,18 @@ const BlogAndArticles = () => {
 
         {/* Card 3 */}
         <Link
-          href={`/blog/${posts.items[4].title.replaceAll(":", ",")}`}
+          href={`/blog/${items.items[4].title.replaceAll(":", ",")}`}
           className="w-[370px] h-[474px] border border-[#888888] rounded-[10px]"
         >
           <div className="flex flex-col p-[20px] lg:p-[34px] ">
             <h5 className="text-[18px] font-[600] text-[#BEBEBE]">Beige</h5>
             <h4 className="w-[354px] lg:w-[302px] mb-4 mt-[43px] font-[500] text-[30px]">
-              {posts.items[4].title}
+              {items.items[4].title}
             </h4>
             <p
               className="leading-[27.2px] text-[#BEBEBE]"
               dangerouslySetInnerHTML={{
-                __html: posts.items[4].content.slice(168, 270),
+                __html: items.items[4].content.slice(168, 270),
               }}
             ></p>
             <div className="border border-[#494949] mt-[64px] mb-5 lg:mt-[63px] lg:mb-[14px]" />
@@ -164,10 +177,10 @@ const BlogAndArticles = () => {
                   width={32}
                   height={32}
                   alt="Person"
-                  src={posts.feed.image}
+                  src={feed!.image}
                   priority
                 />
-                <span className="text-[#BEBEBE]">{posts.items[4].author}</span>
+                <span className="text-[#BEBEBE]">{items.items[4].author}</span>
               </div>
 
               <div className="text-[#565656]">5 min read</div>
