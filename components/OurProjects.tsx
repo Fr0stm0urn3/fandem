@@ -1,39 +1,86 @@
 "use client"
 
 import { useState } from "react"
-
 import Image from "next/image"
 import boxingImg from "../public/assets/images/BoxingImg.png"
 import MiniTitle from "./MiniTitle"
+import Link from "next/link"
+import cardImg1 from "../public/assets/images/Card 1.png"
+import cardImg2 from "../public/assets/images/Card 2.png"
+import cardImg3 from "../public/assets/images/Card 3.png"
+import cardImg4 from "../public/assets/images/Card 4.png"
+import cardImg5 from "../public/assets/images/Card 5.png"
+import cardImg6 from "../public/assets/images/Card 6.png"
+import cardImg7 from "../public/assets/images/Card 7.png"
+import cardImg8 from "../public/assets/images/Card 8.png"
+import cardImg9 from "../public/assets/images/Card 9.png"
+
+const projects = [
+  { title: "blog", src: boxingImg },
+  { title: "Explained, Those are NFTs and how you can invest safely", src: cardImg1 },
+  { title: "Explained, Understanding NFTs, A Safe Investment Guide", src: cardImg2 },
+  { title: "Explained, NFT Basics, Investing Wisely and Safely", src: cardImg3 },
+  { title: "Explained, Your Guide to Safe Investing", src: cardImg4 },
+  { title: "Explained, What Are NFTs, Learn to Invest Securely", src: cardImg5 },
+  { title: "Explained, How to Start Safely", src: cardImg6 },
+  { title: "Explained, Safe Investment Strategies", src: cardImg7 },
+  { title: "Explained, A Beginners Safe Guide", src: cardImg8 },
+  { title: "Explained, How to Invest Safely", src: cardImg9 },
+]
 
 const OurProjects = () => {
   const [item, setItem] = useState(1)
-  const totalItems = 9
+  const [itemSize, setItemSize] = useState(1)
+
+  const endIndex = itemSize * item
+  const startIndex = endIndex - itemSize
+
+  const totalItems = Math.ceil(projects.length / itemSize)
 
   return (
-    <section className="flex flex-col justify-center items-center mb-[168px] lg:mb-[243px]container mx-auto px-4 z-10">
+    <section
+      id="projects"
+      className="flex flex-col justify-center items-center mb-[168px] lg:mb-[243px]container mx-auto px-4 z-10"
+    >
       <MiniTitle title={"Building The Future"} />
       <h2 className="text-[40px] lg:text-[50px] font-[500] leading-[65px] mb-10 lg:mb-20 z-10">
         Our Projects
       </h2>
       <div className="flex flex-col justify-center items-center gap-[48px] lg:flex-row lg:space-y-0 lg:justify-between lg:gap-32 mx-auto container">
         <div className="flex flex-col items-center justify-center space-y-4 lg:flex-row lg:gap-6 z-10">
-          <Image
-            alt="Box"
-            sizes="100vw"
-            height={0}
-            width={0}
-            src={boxingImg}
-            className="mb-[6.3px] z-10"
-          />
+          {projects.length > 0 ? (
+            projects.slice(startIndex, endIndex).map((project) => (
+              <Link
+                href={project.title === "blog" ? project.title : `/blog/${project.title}`}
+                key={project.title ? project.title : "1040fl-124gd5"}
+                className="translate-all duration-300 hover:scale-[102%]"
+              >
+                <Image
+                  alt={project.title ? project.title : "Boxing"}
+                  sizes="100vw"
+                  width={570}
+                  src={project.src}
+                  priority
+                  className={`rounded-2xl mb-[6.3px] z-10`}
+                />
+              </Link>
+            ))
+          ) : (
+            <Image
+              alt="Box"
+              width={560}
+              height={350}
+              src={boxingImg}
+              className="mb-[6.3px] z-10"
+            />
+          )}
           <span className="lg:self-end flex z-10">
             <button
-              className="cursor-pointer group"
+              className={`${item === 1 ? "cursor-not-allowed" : "cursor-pointer"} group`}
               onClick={() => setItem((prev) => prev - 1)}
               disabled={item === 1}
             >
               <svg
-                onClick={() => setItem((prev) => prev - 1)}
                 width="21"
                 height="16"
                 viewBox="0 0 21 16"
@@ -43,7 +90,11 @@ const OurProjects = () => {
                 <path
                   d="M0.292893 7.29289C-0.0976314 7.68341 -0.0976315 8.31658 0.292892 8.7071L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34314C8.46159 1.95262 8.46159 1.31945 8.07107 0.92893C7.68054 0.538406 7.04738 0.538406 6.65686 0.92893L0.292893 7.29289ZM21 7L1 7L1 9L21 9L21 7Z"
                   fill={item === 1 ? "#606060" : "white"}
-                  className="group-hover:fill-[#FFA800] group-active:[#D69516]"
+                  className={`${
+                    item === 1
+                      ? "group-hover:fill-pink-600"
+                      : "group-hover:fill-[#FFA800]"
+                  } group-active:[#D69516]`}
                 />
               </svg>
             </button>
@@ -59,9 +110,10 @@ const OurProjects = () => {
                 fill="white"
               />
             </svg>
-
             <button
-              className="cursor-pointer group"
+              className={`${
+                item === totalItems ? "cursor-not-allowed" : "cursor-pointer"
+              } group`}
               onClick={() => setItem((prev) => prev + 1)}
               disabled={item === totalItems}
             >
@@ -75,7 +127,11 @@ const OurProjects = () => {
                 <path
                   d="M20.7071 8.70711C21.0976 8.31659 21.0976 7.68342 20.7071 7.2929L14.3431 0.928934C13.9526 0.53841 13.3195 0.53841 12.9289 0.928934C12.5384 1.31946 12.5384 1.95262 12.9289 2.34315L18.5858 8L12.9289 13.6569C12.5384 14.0474 12.5384 14.6805 12.9289 15.0711C13.3195 15.4616 13.9526 15.4616 14.3431 15.0711L20.7071 8.70711ZM-1.35505e-07 9L20 9L20 7L1.35505e-07 7L-1.35505e-07 9Z"
                   fill={item === totalItems ? "#606060" : "white"}
-                  className="group-hover:fill-[#FFA800] group-active:[#D69516]"
+                  className={`${
+                    item === totalItems
+                      ? "group-hover:fill-pink-600"
+                      : "group-hover:fill-[#FFA800]"
+                  } group-active:[#D69516]`}
                 />
               </svg>
             </button>
@@ -83,7 +139,7 @@ const OurProjects = () => {
         </div>
         <div className="self-start ml-2 md:ml-24 lg:ml-0 lg:self-center z-10">
           <h4 className="text-[30px] font-[500]">GLORY Smacks</h4>
-          <p className=" leading-[27.2px] text-[#BEBEBE] w-[350px] lg:w-[400px] mt-3 lg:mt-4 mb-8 lg:mb-10">
+          <p className=" leading-[27.2px] text-[#BEBEBE] w-[350px] lg:w-[373.9px] mt-3 lg:mt-4 mb-8 lg:mb-10">
             The first full NFT marketplace for a combat sports league, utilizing the
             content library from GLORY Kickboxing and K-1.
           </p>

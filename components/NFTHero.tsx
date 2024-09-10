@@ -1,14 +1,75 @@
+"use client"
+
 import Image from "next/image"
-import person from "../public/assets/images/Person.png"
-import heroImg from "../public/assets/images/image 1297.png"
-import heroImgSm from "../public/assets/images/image 1297 (1).png"
+import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
+import Spinner from "./Spinner"
+
+type Item = {
+  title: string
+  content: string
+  person: {
+    name: string
+    createdAt: string
+  }
+  author: string
+  pubDate: string
+  categories: string[]
+}
+
+type PostsData = {
+  feed: {
+    image: string
+  }
+  items: Item[]
+}
 
 const NFTHero = () => {
+  const [posts, setPosts] = useState<PostsData>({ feed: { image: "" }, items: [] })
+  const [loading, setLoading] = useState(true)
+
+  const pathname =
+    usePathname()?.split("/")[2].split(",").join("").split("%20").join(" ") || ""
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const res = await fetch(
+          "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@l.kakabadze2020"
+        )
+
+        if (res.status !== 200) {
+          throw new Error("Failed to fetch the data...")
+        }
+
+        const data: PostsData = await res.json()
+
+        setPosts(data)
+      } catch (error) {
+        console.error(error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchPost()
+  }, [pathname])
+
+  if (loading) {
+    return <Spinner loading={loading} />
+  }
+
+  const item = posts.items.find((item) => item.title.replace(/[:]/g, "") === pathname)
+
+  if (!item) {
+    return <div>Post not found</div>
+  }
+
   return (
-    <header className="container mx-auto px-4 lg:px-[100px] flex flex-col items-center">
-      <div className="mx-auto lg:w-[1000px] lg:pr-28 xl:pr-0">
-        <h1 className="text-[#1B1A1A] text-[40px] lg:text-[54px] font-[500] leading-[62px]  w-[423px] md:w-[650px] lg:w-[927px]">
-          Explained: What are NFTs and how you can invest safely
+    <header className="container mx-auto flex flex-col items-center">
+      <div className="mx-auto lg:w-[1000px]">
+        <h1 className="text-[#1B1A1A] text-[40px] lg:text-[54px] font-[500] leading-[52px] lg:leading-[62px] w-[433px] md:w-[640px] lg:w-[827px] xl:w-[927px]">
+          {item.title}
         </h1>
         <div className="flex items-center gap-[40px] mt-4 mb-[24px] lg:mt-5 lg:mb-[40px] self-start">
           <div className="flex items-center gap-2">
@@ -16,32 +77,21 @@ const NFTHero = () => {
               alt="Person"
               priority
               sizes="100vw"
+              className="rounded-[32px]"
               height={32}
               width={32}
-              src={person}
+              src={posts.feed.image}
             />
-            <span className="text-[#1B1A1A]">John Smith</span>
+            <span className="text-[#1B1A1A]">{item.author}</span>
           </div>
-          <div className="text-[#1B1A1A]">July 26, 2021</div>
+          <div className="text-[#1B1A1A]">
+            {new Date(item.pubDate.slice(0, 10)).toLocaleString("default", {
+              month: "long",
+            })}{" "}
+            {new Date(item.pubDate.slice(0, 10)).getDate()},{" "}
+            {new Date(item.pubDate.slice(0, 10)).getFullYear()}
+          </div>
         </div>
-        <Image
-          priority
-          sizes="100vw"
-          alt="Hero"
-          height={0}
-          width={0}
-          src={heroImg}
-          className="hidden md:block "
-        />
-        <Image
-          priority
-          sizes="100vw"
-          alt="Hero"
-          height={0}
-          width={0}
-          src={heroImgSm}
-          className="md:hidden w-[440px]"
-        />
       </div>
     </header>
   )

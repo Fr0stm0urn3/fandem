@@ -2,17 +2,20 @@ import Link from "next/link"
 
 const FooterHeader = () => {
   return (
-    <section className="container mx-auto mb-[100px] lg:mb-[150px] z-10 px-4 lg:px-0">
+    <section
+      id="careers"
+      className="container mx-auto mb-[100px] lg:mb-[150px] z-10 px-4 lg:px-0"
+    >
       <div className="flex flex-col justify-center items-center  py-14 px-[16px] lg:py-[105px] md:px-[220px] lg:px-[268px]  rounded-[40px] footerCard bg-[#BEBEBE] bg-opacity-20">
-        <h3 className="text-[30px] lg:text-[40px] font-[500] leading-[48px] text-center w-[300px] lg:w-[635px]">
+        <h3 className="text-[30px] lg:text-[40px] font-[600] md:font-[500] leading-[48px] text-center w-[300px] md:w-[635px]">
           Join our team and let's start working together{" "}
         </h3>
-        <p className="font-[gilroy] text-[16px] leading-[27.2px] text-center text-[#BEBEBE] w-[280px] lg:w-[554px] mt-4 mb-10">
+        <p className="font-[gilroy] text-[16px] leading-[27.2px] text-center text-[#BEBEBE] w-[280px] md:w-[554px] mt-4 mb-10">
           You can apply for any of the roles on our Careers Page. If you are interested in
           joining our team, but do not see a specific role that aligns, please contact us
           directly
         </p>
-        <div className="flex flex-col lg:flex-row justify-center gap-[16px] lg:gap-[26px] w-full">
+        <div className="flex flex-col xl:flex-row justify-center gap-[16px] xl:gap-[26px] w-full">
           <button
             type="submit"
             className="flex gap-3 justify-center items-center text-[18px] group font-bold rounded-[10px] py-3 px-6 text-[#1B1A1A] bg-[#FFFFFF] h-[56px]

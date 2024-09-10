@@ -1,11 +1,49 @@
+"use client"
+
+import { useState, useEffect } from "react"
+
 import Link from "next/link"
 import MiniTitle from "./MiniTitle"
 import ArrowTopRightButton from "./ArrowTopRightButton"
 import Image from "next/image"
-import person from "../public/assets/images/Person.png"
 import cardImg from "../public/assets/images/image 49.png"
+import Spinner from "./Spinner"
+
+const hl = [
+  "http://localhost:3000/blog/Explained,%20What%20Are%20NFTs,%20Learn%20to%20Invest%20Securely",
+  "http://localhost:3000/blog/Explained,%20What%20Are%20NFTs:%20Learn%20to%20Invest%20Securely",
+]
 
 const BlogAndArticles = () => {
+  const [posts, setPosts] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@l.kakabadze2020"
+        )
+
+        if (res.status !== 200) {
+          throw new Error("Failed to fetch the data...")
+        }
+
+        const data = await res.json()
+        setPosts(data)
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchData()
+  }, [])
+
+  if (loading) {
+    return <Spinner loading={loading} />
+  }
+
   return (
     <article className="mb-[189px] lg:mb-[229px] px-4 2xl:px-0 lg:block container mx-auto  flex flex-col items-center justify-center">
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center   ">
@@ -25,37 +63,43 @@ const BlogAndArticles = () => {
       <div
         //         className="flex flex-col justify-between items-center lg:flex-row mt-[58px] lg:mt-[70px] lg:min-w-[1000px] gap-2 lg:-ml-14 xl:container xl:ml-0
         // "
-        className="flex flex-wrap justify-center items-center gap-[30px] xl:justify-between mt-[58px] lg:mt-[70px]"
+        className="flex  flex-wrap justify-center items-center gap-[30px] mt-[58px] lg:mt-[70px]"
       >
         {/* Card 1 */}
-        <div className="w-[370px] h-[474px] border border-[#888888] rounded-[10px]">
+        <Link
+          href={`/blog/${posts.items[0].title.replaceAll(":", ",")}`}
+          className="w-[370px] h-[474px] border border-[#888888] rounded-[10px]"
+        >
           <div className="flex flex-col p-[20px] lg:p-[34px] mx-auto ">
             <h5 className="text-[18px] font-[600] text-[#BEBEBE]">Beige</h5>
             <h4 className="w-[354px] lg:w-[302px] mb-4 mt-[43px] font-[500] text-[30px]">
-              Explained: What are NFTs and how you can invest safely
+              {posts.items[0].title}
             </h4>
-            <p className="leading-[27.2px] text-[#BEBEBE]">
-              To avoid such fast-rising and free-falling valuations, you need to properly
-              assess NFTs...
-            </p>
+            <p
+              className="leading-[27.2px] text-[#BEBEBE]"
+              dangerouslySetInnerHTML={{
+                __html: posts.items[0].content.slice(170, 304),
+              }}
+            ></p>
             <div className="border border-[#494949] mt-[64px] mb-5 lg:mt-[63px] lg:mb-[14px]" />
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <Image
                   sizes="100vw"
-                  width={0}
-                  height={0}
+                  className="rounded-full"
+                  width={32}
+                  height={32}
                   alt="Person"
-                  src={person}
+                  src={posts.feed.image}
                   priority
                 />
-                <span className="text-[#BEBEBE]">John Smith</span>
+                <span className="text-[#BEBEBE]">{posts.items[0].author}</span>
               </div>
 
               <div className="text-[#565656]">5 min read</div>
             </div>
           </div>
-        </div>
+        </Link>
         {/* Card 2 */}
         <div className="min-w-[370px] h-[474px] rounded-[10px] relative">
           <div className="w-full">
@@ -96,34 +140,40 @@ const BlogAndArticles = () => {
         </div>
 
         {/* Card 3 */}
-        <div className="w-[370px] h-[474px] border border-[#888888] rounded-[10px] ">
+        <Link
+          href={`/blog/${posts.items[4].title.replaceAll(":", ",")}`}
+          className="w-[370px] h-[474px] border border-[#888888] rounded-[10px]"
+        >
           <div className="flex flex-col p-[20px] lg:p-[34px] ">
             <h5 className="text-[18px] font-[600] text-[#BEBEBE]">Beige</h5>
             <h4 className="w-[354px] lg:w-[302px] mb-4 mt-[43px] font-[500] text-[30px]">
-              Explained: What are NFTs and how you can invest safely
+              {posts.items[4].title}
             </h4>
-            <p className="leading-[27.2px] text-[#BEBEBE]">
-              To avoid such fast-rising and free-falling valuations, you need to properly
-              assess NFTs...
-            </p>
+            <p
+              className="leading-[27.2px] text-[#BEBEBE]"
+              dangerouslySetInnerHTML={{
+                __html: posts.items[4].content.slice(168, 270),
+              }}
+            ></p>
             <div className="border border-[#494949] mt-[64px] mb-5 lg:mt-[63px] lg:mb-[14px]" />
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <Image
+                  className="rounded-full"
                   sizes="100vw"
-                  width={0}
-                  height={0}
+                  width={32}
+                  height={32}
                   alt="Person"
-                  src={person}
+                  src={posts.feed.image}
                   priority
                 />
-                <span className="text-[#BEBEBE]">John Smith</span>
+                <span className="text-[#BEBEBE]">{posts.items[4].author}</span>
               </div>
 
               <div className="text-[#565656]">5 min read</div>
             </div>
           </div>
-        </div>
+        </Link>
       </div>
     </article>
   )

@@ -1,15 +1,71 @@
-import React from "react"
-import Image from "next/image"
-import postContentImgOne from "../public/assets/images/image 1298.png"
-import postContentImgOneMobile from "../public/assets/images/image 1298 (1).png"
-import postContentImgTwo from "../public/assets/images/image 1299.png"
-import postContentImgTwoMobile from "../public/assets/images/image 1299 (1).png"
+"use client"
 
-const PostContent = async () => {
+import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
+import Spinner from "./Spinner"
+import { PostContainer } from "../mediumElementStyles/mediumStyles"
+import NFTHero from "./NFTHero"
+import Link from "next/link"
+
+type Item = {
+  title: string
+  content: string
+  person: {
+    name: string
+    createdAt: string
+  }
+  author: string
+  pubDate: string
+  categories: [string]
+}
+
+const PostContent = () => {
+  const [posts, setPosts] = useState<{ items: Item[] }>({ items: [] })
+  const [loading, setLoading] = useState(true)
+  const pathname = usePathname().split("/")[2].split(",").join("").split("%20").join(" ")
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const res = await fetch(
+          "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@l.kakabadze2020"
+        )
+
+        if (res.status !== 200) {
+          throw new Error("Failed to fetch the data...")
+        }
+
+        const data = await res.json()
+        setPosts(data)
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchPosts()
+  }, [pathname])
+
+  if (loading) {
+    return <Spinner loading={loading} />
+  }
+
+  const post = posts.items.find((post) => {
+    return post.title.split(":").join("") === pathname
+  })
+
+  if (!post) {
+    return <p>No post found with the specified title.</p>
+  }
+
   return (
-    <section className="container mx-auto text-[#1B1A1A] px-4 lg:px-[100px] flex flex-col items-center">
-      <div>
-        <div className="my-10">
+    <section className="container mx-auto text-[#1B1A1A] px-4 flex flex-col items-center justify-center">
+      <NFTHero />
+      <PostContainer>
+        <article dangerouslySetInnerHTML={{ __html: post.content }}></article>
+      </PostContainer>
+      <div className="container mx-auto max-w-[975px]">
+        {/* <div className="my-10">
           <h4 className="text-[30px] w-[343px] md:w-full md:text-[40px] md:font-[500] leading-[30px] lg:leading-[48px]">
             Lorem ipsum dolor sit amet.
           </h4>
@@ -144,11 +200,11 @@ const PostContent = async () => {
           <div className="text-[#555] my-5 md:my-4 w-[343px] md:w-full leading-[27.2px]">
             Learn more about how to measure your website's traffic and performance.
           </div>
-        </div>
-        <div className="border border-[#D4D4D4] mt-5 mb-[23px] w-full" />
-        <div className="flex items-center gap-6 mb-[56.95px] lg:mb-[121px] self-start">
+        </div> */}
+        <div className="border border-[#D4D4D4] mt-5 mb-[23px]  mx-auto container w-full px-10 block" />
+        <div className=" flex items-center gap-6 mb-[56.95px] lg:mb-[121px] lg:self-start  md:justify-start">
           <span>Share:</span>
-          <span>
+          <Link href={"https://www.facebook.com/"} target="_blank">
             <svg
               width="38"
               height="38"
@@ -181,8 +237,8 @@ const PostContent = async () => {
                 </linearGradient>
               </defs>
             </svg>
-          </span>
-          <span>
+          </Link>
+          <Link href={"https://x.com/"} target="_blank">
             <svg
               width="38"
               height="38"
@@ -215,8 +271,8 @@ const PostContent = async () => {
                 </linearGradient>
               </defs>
             </svg>
-          </span>
-          <span>
+          </Link>
+          <Link href={"https://www.instagram.com/"} target="_blank">
             <svg
               width="38"
               height="38"
@@ -249,8 +305,8 @@ const PostContent = async () => {
                 </linearGradient>
               </defs>
             </svg>
-          </span>
-          <span>
+          </Link>
+          <Link href={"https://www.linkedin.com/"} target="_blank">
             <svg
               width="40"
               height="40"
@@ -299,7 +355,7 @@ const PostContent = async () => {
                 </clipPath>
               </defs>
             </svg>
-          </span>
+          </Link>
         </div>
       </div>
     </section>

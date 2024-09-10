@@ -1,9 +1,16 @@
 import Link from "next/link"
 
-const SocialMedias = ({ width, height, gWidthHeight, className }: any) => {
+type SocialMediasProps = {
+  width: number
+  height: number
+  gWidthHeight: number
+  className: string | undefined
+}
+
+const SocialMedias = ({ width, height, gWidthHeight, className }: SocialMediasProps) => {
   return (
     <div className={className}>
-      <Link href={"/https://www.facebook.com"} target="_blank">
+      <Link href={"https://www.facebook.com"} target="_blank">
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"

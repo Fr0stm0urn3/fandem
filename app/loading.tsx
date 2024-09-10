@@ -7,7 +7,11 @@ const override = {
   margin: "150px auto",
 }
 
-const LoadingPage = ({ loading }: any) => {
+type LoadingPageProps = {
+  loading: boolean
+}
+
+const LoadingPage = ({ loading }: LoadingPageProps) => {
   return (
     <ClipLoader
       loading={loading}
