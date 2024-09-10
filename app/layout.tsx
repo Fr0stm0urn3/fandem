@@ -38,12 +38,12 @@ function HeadMeta() {
     <Head>
       <meta
         property="og:image"
-        content={`fandem-sigma.vercel.app/assets/images/FandemCover.png`}
+        content={`Fandem-Ai.vercel.app/assets/images/FandemCover.png`}
       />
       <meta name="twitter:card" content="summary_large_image" />
       <meta
         name="twitter:image"
-        content={"fandem-sigma.vercel.app/assets/images/FandemCover.png"}
+        content={"Fandem-Ai.vercel.app/assets/images/FandemCover.png"}
       />
     </Head>
   )
