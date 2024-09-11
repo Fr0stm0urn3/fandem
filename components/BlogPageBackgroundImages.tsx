@@ -2,11 +2,10 @@
 
 import blogHeroImg from "../public/assets/images/Group 87.png"
 import Image from "next/image"
-import { useContext } from "react"
-import { GlobalContext } from "../context/GlobalContext"
+import { useGlobalContext } from "../context/GlobalContext"
 
 const BlogPageBackgroundImages = () => {
-  const { isMobileMenuOpen } = useContext(GlobalContext)
+  const { isMobileMenuOpen } = useGlobalContext()
 
   return (
     !isMobileMenuOpen && (

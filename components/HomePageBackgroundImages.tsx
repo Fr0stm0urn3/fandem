@@ -14,11 +14,10 @@ import rotatedBg from "../public/assets/images/bg.png"
 import darkBlur from "../public/assets/images/Ellipse 14_35.png"
 import headerFooterImg from "../public/assets/images/Line.png"
 import vector3 from "../public/assets/images/Vector 3.png"
-import { useContext } from "react"
-import { GlobalContext } from "../context/GlobalContext"
+import { useGlobalContext } from "../context/GlobalContext"
 
 const HomePageBackgroundImages = () => {
-  const { isMobileMenuOpen } = useContext(GlobalContext)
+  const { isMobileMenuOpen } = useGlobalContext()
 
   return (
     !isMobileMenuOpen && (

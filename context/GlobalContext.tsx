@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useState, ReactNode } from "react"
+import { createContext, useContext, useState, ReactNode } from "react"
 
 interface GlobalContextProps {
   isMobileMenuOpen: boolean
@@ -21,4 +21,13 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
       {children}
     </GlobalContext.Provider>
   )
+}
+
+// Custom hook to use the context
+export const useGlobalContext = () => {
+  const context = useContext(GlobalContext)
+  if (!context) {
+    throw new Error("useGlobalContext must be used within a GlobalProvider")
+  }
+  return context
 }

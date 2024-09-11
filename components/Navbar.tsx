@@ -9,11 +9,10 @@ import SocialMedias from "./SocialMedias"
 import ArrowTopRightButton from "./ArrowTopRightButton"
 import logoDark from "../public/assets/images/LogoDark.png"
 import { usePathname } from "next/navigation"
-import { useContext } from "react"
-import { GlobalContext } from "../context/GlobalContext"
+import { useGlobalContext } from "../context/GlobalContext"
 
 const Navbar = () => {
-  const { isMobileMenuOpen, setIsMobileMenuOpen } = useContext(GlobalContext)
+  const { isMobileMenuOpen, setIsMobileMenuOpen } = useGlobalContext()
   const [width, setWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 0
   )
@@ -74,7 +73,7 @@ const Navbar = () => {
     <>
       {!isMobileMenuOpen ? (
         <nav className={`${pathname ? "bg-[#fff]" : "bg-black"}`}>
-          <div className="container mx-auto font-[gilroy] flex justify-between items-center pt-8 px-4 xl:px-0">
+          <div className="container mx-auto flex justify-between items-center pt-8 px-4 xl:px-0">
             <Link href={"/"} onClick={removeAbsoluteClassUponClickingOnALink}>
               <Image
                 alt="Logo"
