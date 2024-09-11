@@ -14,12 +14,9 @@ import { GlobalContext } from "../context/GlobalContext"
 
 const Navbar = () => {
   const { isMobileMenuOpen, setIsMobileMenuOpen } = useContext(GlobalContext)
-  // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [width, setWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 0
   )
-
-  const pathname = usePathname().split("/")[2]
 
   useEffect(() => {
     const childElement = document.querySelector("#hamburgerMenu")
@@ -33,7 +30,7 @@ const Navbar = () => {
         parentElement?.classList.remove("hideScrollbar")
       }
     }
-  }, [isMobileMenuOpen])
+  }, [isMobileMenuOpen, setIsMobileMenuOpen])
 
   useEffect(() => {
     const handleResize = () => {
@@ -56,7 +53,10 @@ const Navbar = () => {
     }
 
     return () => window.removeEventListener("resize", handleResize)
-  }, [width, isMobileMenuOpen])
+  }, [width, isMobileMenuOpen, setIsMobileMenuOpen])
+
+  const purePathname = usePathname()
+  const pathname = purePathname.split("/")[2]
 
   const removeAbsoluteClassUponClickingOnALink = () => {
     const childElement = document.querySelector("#hamburgerMenu")
@@ -101,7 +101,7 @@ const Navbar = () => {
                   className={`hover:text-[#FFA800] transition  ${
                     pathname ? "text-[#1B1A1A] " : "text-[#BDBDBD]"
                   } ${
-                    usePathname() === "/blog" && "text-[#FFA800]"
+                    purePathname === "/blog" && "text-[#FFA800]"
                   } hover:border-b hover:pb-2 hover:border-b-[#FFA800] transition-all hover:duration-300`}
                 >
                   Blog
@@ -198,7 +198,7 @@ const Navbar = () => {
           </div>
           <ul className="text-[30px] font-[500] mt-[91.59px] flex flex-col space-y-4 self-start">
             <Link
-              href={"#projects"}
+              href={"/#projects"}
               className="hover:text-[#FFA800] transition"
               onClick={removeAbsoluteClassUponClickingOnALink}
             >
@@ -212,7 +212,7 @@ const Navbar = () => {
               <li>Blog</li>
             </Link>
             <Link
-              href={"#/careers"}
+              href={"/#careers"}
               className="hover:text-[#FFA800] transition"
               onClick={removeAbsoluteClassUponClickingOnALink}
             >
