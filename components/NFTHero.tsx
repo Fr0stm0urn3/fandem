@@ -67,11 +67,11 @@ const NFTHero = () => {
 
   return (
     <header className="container mx-auto flex flex-col items-center">
-      <div className="mx-auto lg:w-[1000px]">
-        <h1 className="text-[#1B1A1A] text-[40px] lg:text-[54px] font-[500] leading-[52px] lg:leading-[62px] w-[433px] md:w-[640px] lg:w-[827px] xl:w-[927px]">
+      <div className=" lg:w-[1000px] px-4">
+        <h1 className="text-[#1B1A1A] text-[40px] md:text-[54px] font-[500] leading-[52px] lg:leading-[62px] ">
           {item.title}
         </h1>
-        <div className="flex items-center gap-[40px] mt-4 mb-[24px] lg:mt-5 lg:mb-[40px] self-start">
+        <div className="flex items-center gap-[40px] mt-4 mb-[24px] lg:mt-5 lg:mb-[40px] ">
           <div className="flex items-center gap-2">
             <Image
               alt="Person"

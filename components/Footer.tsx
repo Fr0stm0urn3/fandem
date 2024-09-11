@@ -7,7 +7,7 @@ const Footer = () => {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="container mx-auto font-[gilroy] text-[#949494] px-4 md:px-0  pt-[30px]">
+    <footer className="container mx-auto font-mono text-[#949494] px-4 md:px-0  pt-[30px]">
       <div className="flex flex-col lg:flex-row justify-between items-center mb-10  lg:mb-[28.93px] ">
         <Link href={"/"} className="block lg:hidden mb-[22.93px] ml-[112px] mr-[94.89px]">
           <Image
@@ -21,13 +21,13 @@ const Footer = () => {
           />
         </Link>
         <ul className="flex flex-col text-center space-y-4 lg:space-y-0 mb-4 lg:mb-0 lg:flex-row lg:space-x-[60px]">
-          <Link href={"#projects"}>
+          <Link href={"#projects"} className="hover:text-[#FFA800] transition">
             <li>Products</li>
           </Link>
-          <Link href={"/blog"}>
+          <Link href={"/blog"} className="hover:text-[#FFA800] transition">
             <li>Blog</li>
           </Link>
-          <Link href={"#careers"}>
+          <Link href={"#careers"} className="hover:text-[#FFA800] transition">
             <li>Careers</li>
           </Link>
         </ul>
@@ -44,10 +44,10 @@ const Footer = () => {
           />
         </Link>
         <ul className="flex flex-col text-center space-y-4 lg:space-y-0 lg:flex-row lg:space-x-[60px]">
-          <Link href={"/terms-conditions"}>
+          <Link href={"/terms-conditions"} className="hover:text-[#FFA800] transition">
             <li>Terms & Conditions</li>
           </Link>
-          <Link href={"/privacy-policy"}>
+          <Link href={"/privacy-policy"} className="hover:text-[#FFA800] transition">
             <li>Privacy Policy</li>
           </Link>
         </ul>

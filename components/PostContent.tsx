@@ -206,6 +206,7 @@ const PostContent = () => {
           <span>Share:</span>
           <Link href={"https://www.facebook.com/"} target="_blank">
             <svg
+              className="hover:scale-110 transition-all duration-300"
               width="38"
               height="38"
               viewBox="0 0 38 38"
@@ -240,6 +241,7 @@ const PostContent = () => {
           </Link>
           <Link href={"https://x.com/"} target="_blank">
             <svg
+              className="hover:scale-110 transition-all duration-300"
               width="38"
               height="38"
               viewBox="0 0 38 38"
@@ -274,6 +276,7 @@ const PostContent = () => {
           </Link>
           <Link href={"https://www.instagram.com/"} target="_blank">
             <svg
+              className="hover:scale-110 transition-all duration-300"
               width="38"
               height="38"
               viewBox="0 0 38 38"
@@ -308,6 +311,7 @@ const PostContent = () => {
           </Link>
           <Link href={"https://www.linkedin.com/"} target="_blank">
             <svg
+              className="hover:scale-110 transition-all duration-300"
               width="40"
               height="40"
               viewBox="0 0 40 40"

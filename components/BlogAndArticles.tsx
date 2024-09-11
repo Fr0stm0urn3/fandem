@@ -91,7 +91,7 @@ const BlogAndArticles = () => {
             <p
               className="leading-[27.2px] text-[#BEBEBE]"
               dangerouslySetInnerHTML={{
-                __html: items.items[0].content.slice(170, 304),
+                __html: items.items[0].content.slice(170, 299).trim() + "...",
               }}
             ></p>
             <div className="border border-[#494949] mt-[64px] mb-5 lg:mt-[63px] lg:mb-[14px]" />
@@ -165,7 +165,7 @@ const BlogAndArticles = () => {
             <p
               className="leading-[27.2px] text-[#BEBEBE]"
               dangerouslySetInnerHTML={{
-                __html: items.items[4].content.slice(168, 270),
+                __html: items.items[4].content.slice(168, 269).trim() + "...",
               }}
             ></p>
             <div className="border border-[#494949] mt-[64px] mb-5 lg:mt-[63px] lg:mb-[14px]" />

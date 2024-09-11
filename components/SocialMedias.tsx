@@ -18,6 +18,7 @@ const SocialMedias = ({ width, height, gWidthHeight, className }: SocialMediasPr
             height={height}
             viewBox={`0 0 ${width} ${height}`}
             fill="none"
+            className="hover:scale-110 transition-all duration-300"
           >
             <g filter="url(#filter0_d_1_2300)">
               <rect
@@ -86,6 +87,7 @@ const SocialMedias = ({ width, height, gWidthHeight, className }: SocialMediasPr
       <Link href={"https://x.com/home"} target="_blank">
         <span>
           <svg
+            className="hover:scale-110 transition-all duration-300"
             xmlns="http://www.w3.org/2000/svg"
             width={width}
             height={height}
@@ -160,6 +162,7 @@ const SocialMedias = ({ width, height, gWidthHeight, className }: SocialMediasPr
       <Link href={"https://www.instagram.com/"} target="_blank">
         <span>
           <svg
+            className="hover:scale-110 transition-all duration-300"
             xmlns="http://www.w3.org/2000/svg"
             width={width}
             height={height}
@@ -232,6 +235,7 @@ const SocialMedias = ({ width, height, gWidthHeight, className }: SocialMediasPr
       </Link>
       <Link href={"https://www.linkedin.com/"} target="_blank">
         <svg
+          className="hover:scale-110 transition-all duration-300"
           width={gWidthHeight}
           height={gWidthHeight}
           viewBox="0 0 38 38"

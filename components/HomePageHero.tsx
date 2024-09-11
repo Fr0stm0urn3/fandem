@@ -64,7 +64,7 @@ const HomePageHero = () => {
           {`{${TEXTS[index % TEXTS.length]}}`}
         </TextTransition>
       </h1>
-      <p className="w-[300px] -ml-8 md:ml-0 md:w-[470px] mt-5 mb-10 font-[gilroy] text-base leading-[27.2px] text-[#BEBEBE] z-10">
+      <p className="w-[300px] -ml-8 md:ml-0 md:w-[470px] mt-5 mb-10 text-base leading-[27.2px] text-[#BEBEBE] z-10">
         We partner with the most forward-thinking global IP rights owners across sports,
         gaming, and entertainment to create their NFT marketplaces.{" "}
       </p>
