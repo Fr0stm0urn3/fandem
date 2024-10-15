@@ -51,7 +51,7 @@ const HomePageHero = () => {
   // console.log(items)
 
   useEffect(() => {
-    const interValId = setInterval(() => setIndex((index) => index + 1), 250000)
+    const interValId = setInterval(() => setIndex((index) => index + 1), 2500)
 
     return () => clearTimeout(interValId)
   }, [])

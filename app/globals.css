@@ -22,6 +22,8 @@ body {
   overflow-x: hidden;
   /* position: relative; */
   font-family: "Gilroy", sans-serif;
+  min-height: 0;
+  min-width: 0;
 }
 
 .hideScrollbar {
@@ -43,23 +45,8 @@ body {
   background-blend-mode: overlay, overlay, normal;
 }
 /* /*  */
-#slider-boxes {
+.slider-box {
   display: flex !important;
-}
-
-.slick-arrow:before {
-  color: red;
-  font-size: 50px;
-}
-
-.slick-prev {
-  top: -60px;
-  left: 1170px;
-}
-
-.slick-next {
-  right: 26px;
-  top: -60px;
 }
 
 /* $slick-font-path: "./fonts/" !default;
