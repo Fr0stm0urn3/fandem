@@ -4,13 +4,13 @@ const FooterHeader = () => {
   return (
     <section
       id="careers"
-      className="container mx-auto mb-[100px] lg:mb-[150px] z-10 px-4 lg:px-0"
+      className="container mx-auto mb-[100px] lg:mb-[150px] z-10 px-4 lg:px-[135px]"
     >
-      <div className="flex flex-col justify-center items-center  py-14 px-[16px] lg:py-[105px] md:px-[220px] lg:px-[268px]  rounded-[40px] footerCard bg-[#BEBEBE] bg-opacity-20">
-        <h3 className="text-[30px] lg:text-[40px] font-[600] md:font-[500] leading-[48px] text-center w-[300px] md:w-[635px]">
+      <div className="flex flex-col justify-center items-center  py-14 px-[16px] lg:py-[105px] md:px-[220px] lg:px-[168px]  rounded-[40px] footerCard bg-[#BEBEBE] bg-opacity-20">
+        <h3 className="text-[30px] lg:text-[40px] font-[600] md:font-[500] leading-[48px] text-center w-[300px] sm:w-[335px]  md:w-[435px] lg:w-[635px]">
           Join our team and let's start working together{" "}
         </h3>
-        <p className="text-[16px] leading-[27.2px] text-center text-[#BEBEBE] w-[280px] md:w-[504px] mt-4 mb-10">
+        <p className="text-[16px] leading-[27.2px] text-center text-[#BEBEBE]  w-[280px] sm:w-[404px] md:w-[504px] mt-4 mb-10">
           You can apply for any of the roles on our Careers Page. If you are interested in
           joining our team, but do not see a specific role that aligns, please contact us
           directly
@@ -42,7 +42,7 @@ const FooterHeader = () => {
             <button
               type="submit"
               className="flex gap-3 justify-center items-center text-[18px] group font-bold rounded-[10px] py-3 px-6 text-white  border border-white h-[56px]
-            hover:bg-[white] hover:text-[#1B1A1A] transition  w-full  xl:w-fit"
+            hover:bg-[white] hover:text-[#1B1A1A] transition  w-full xl:w-fit"
             >
               Contact Us
               <span>

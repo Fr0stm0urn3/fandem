@@ -85,14 +85,16 @@ import HomePageBackgroundImages from "../components/HomePageBackgroundImages"
 
 const HomePage = () => {
   return (
-    <>
-      <HomePageHero />
-      <OurProjects />
-      <BlogAndArticles />
-      <HomePageBackgroundImages />
-      <ContactForm />
-      <FooterHeader />
-    </>
+    <div className="mx-auto max-w-[1920px] relative">
+      <div>
+        <HomePageHero />
+        <OurProjects />
+        <BlogAndArticles />
+        <HomePageBackgroundImages />
+        <ContactForm />
+        <FooterHeader />
+      </div>
+    </div>
   )
 }
 

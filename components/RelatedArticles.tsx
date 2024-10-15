@@ -76,8 +76,8 @@ const RelatedArticles = () => {
     })
 
   return (
-    <article className="container mx-auto mb-[100px] xl:mb-[150px]">
-      <h2 className="text-[#1B1A1A] text-[40px] mb-8 lg:text-[50px] font-[500] lg:mb-[60px] text-center xl:text-start px-4 xl:px-48 2xl:px-36">
+    <article className="container mx-auto mb-[100px] xl:mb-[150px] px-4 lg:px-[135px]">
+      <h2 className="text-[#1B1A1A] text-[40px] mb-8 lg:text-[50px] font-[500] lg:mb-[60px] text-center 2xl:text-start px-4">
         Related Articles
       </h2>
       <div className="flex flex-wrap gap-[20px]  min-w-[343.195px] lg:min-w-[370px] justify-center ">

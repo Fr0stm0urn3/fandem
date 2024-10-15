@@ -18,24 +18,27 @@ export const DescriptionContainer = styled.div`
   h6 {
     color: #1b1a1a;
     margin-top: 2.5rem;
+    font-size: 30px;
   }
 
   h3 {
     font-size: 40px;
   }
 
-  h4 {
+  h3 {
     font-size: 30px;
     padding-left: 34px;
     padding-right: 34px;
     margin-bottom: 20px;
     font-weight: 400;
+    font-family: prompt;
   }
 
   p {
     color: #555555;
     padding-left: 34px;
     padding-right: 34px;
+    font-family: Gilroy;
   }
 
   ul,
@@ -208,6 +211,7 @@ export const PostContainer = styled.div`
 
   h3 {
     font-size: 40px;
+    display: none;
   }
 
   h4 {
@@ -230,6 +234,10 @@ export const PostContainer = styled.div`
     overflow: hidden;
     word-wrap: break-word;
     word-break: break-all;
+  }
+
+  img:first-child {
+    margin-bottom: 30px;
   }
 
   img {

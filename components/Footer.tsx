@@ -7,7 +7,7 @@ const Footer = () => {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="container mx-auto font-mono text-[#949494] px-4 md:px-0  pt-[30px]">
+    <footer className="container mx-auto  text-[#949494] px-4 md:px-0  pt-[30px] lg:px-[135px]">
       <div className="flex flex-col lg:flex-row justify-between items-center mb-10  lg:mb-[28.93px] ">
         <Link href={"/"} className="block lg:hidden mb-[22.93px] ml-[112px] mr-[94.89px]">
           <Image
@@ -328,7 +328,7 @@ const Footer = () => {
         gWidthHeight={38}
         className={"flex justify-center gap-6 mt-[41px] lg:mt-[31px]"}
       />
-      <div className="flex justify-center mt-[25px] lg:mt-[21px] mb-4 lg:mb-5 text-[#565656] text-[14px] font-mono">
+      <div className="flex justify-center mt-[25px] lg:mt-[21px] mb-4 lg:mb-5 text-[#565656] text-[14px] font-[poppins]">
         &copy; {year} Fandem, All Rights Reserved
       </div>
     </footer>

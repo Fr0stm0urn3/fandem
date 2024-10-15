@@ -55,7 +55,7 @@ const Navbar = () => {
   }, [width, isMobileMenuOpen, setIsMobileMenuOpen])
 
   const purePathname = usePathname()
-  const pathname = purePathname.split("/")[2]
+  const pathnameToDetermineCertainStylesForDarkAndWhiteModes = purePathname.split("/")[2]
 
   const removeAbsoluteClassUponClickingOnALink = () => {
     const childElement = document.querySelector("#hamburgerMenu")
@@ -72,24 +72,34 @@ const Navbar = () => {
   return (
     <>
       {!isMobileMenuOpen ? (
-        <nav className={`${pathname ? "bg-[#fff]" : "bg-black"}`}>
-          <div className="container mx-auto flex justify-between items-center pt-8 px-4 xl:px-0">
+        <nav
+          className={`${
+            pathnameToDetermineCertainStylesForDarkAndWhiteModes
+              ? "bg-[#fff]"
+              : "bg-black"
+          }`}
+        >
+          <div className="container mx-auto flex justify-between items-center pt-8 px-4 lg:px-[135px]">
             <Link href={"/"} onClick={removeAbsoluteClassUponClickingOnALink}>
               <Image
                 alt="Logo"
                 sizes="100vw"
                 height={0}
                 width={0}
-                src={pathname ? logoDark : logo}
+                src={
+                  pathnameToDetermineCertainStylesForDarkAndWhiteModes ? logoDark : logo
+                }
                 priority
                 className="lg:w-[183px] lg:h-[52px]"
               />
             </Link>
-            <ul className="list-none lg:flex justify-center items-center space-x-10 hidden">
+            <ul className="list-none lg:flex justify-center items-center gap-10 hidden">
               <Link href={"/#projects"} className={``}>
                 <li
                   className={`hover:text-[#FFA800] transition ${
-                    pathname ? "text-[#1B1A1A] " : "text-[#BDBDBD]"
+                    pathnameToDetermineCertainStylesForDarkAndWhiteModes
+                      ? "text-[#1B1A1A] "
+                      : "text-[#BDBDBD]"
                   } hover:border-b hover:pb-2 hover:border-b-[#FFA800] transition-all hover:duration-300`}
                 >
                   Products
@@ -98,7 +108,9 @@ const Navbar = () => {
               <Link href={"/blog"}>
                 <li
                   className={`hover:text-[#FFA800] transition  ${
-                    pathname ? "text-[#1B1A1A] " : "text-[#BDBDBD]"
+                    pathnameToDetermineCertainStylesForDarkAndWhiteModes
+                      ? "text-[#1B1A1A] "
+                      : "text-[#BDBDBD]"
                   } ${
                     purePathname === "/blog" && "text-[#FFA800]"
                   } hover:border-b hover:pb-2 hover:border-b-[#FFA800] transition-all hover:duration-300`}
@@ -109,7 +121,9 @@ const Navbar = () => {
               <Link href={"/#careers"} className={``}>
                 <li
                   className={`hover:text-[#FFA800] transition ${
-                    pathname ? "text-[#1B1A1A] " : "text-[#BDBDBD]"
+                    pathnameToDetermineCertainStylesForDarkAndWhiteModes
+                      ? "text-[#1B1A1A] "
+                      : "text-[#BDBDBD]"
                   } hover:border-b hover:pb-2 hover:border-b-[#FFA800] transition-all hover:duration-300`}
                 >
                   Careers
@@ -120,8 +134,14 @@ const Navbar = () => {
             <ArrowTopRightButton
               content="Contact Us"
               href={"/#contact"}
-              className={`hidden lg:flex ${pathname ? "text-[#1B1A1A]" : "text-[#FFF]"}`}
-              svgColor={`${pathname ? "#1B1A1A" : "#FFF"}`}
+              className={`hidden lg:flex gap-[10px] ${
+                pathnameToDetermineCertainStylesForDarkAndWhiteModes
+                  ? "text-[#1B1A1A]"
+                  : "text-[#FFF]"
+              }`}
+              svgColor={`${
+                pathnameToDetermineCertainStylesForDarkAndWhiteModes ? "#1B1A1A" : "#FFF"
+              }`}
             />
             <button
               onClick={() => {
@@ -136,9 +156,35 @@ const Navbar = () => {
                 fill="white"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <rect width="32" height="3" fill={pathname ? "#1B1A1A" : "#FFF"} />
-                <rect y="6" width="32" height="3" fill={pathname ? "#1B1A1A" : "#FFF"} />
-                <rect y="12" width="32" height="3" fill={pathname ? "#1B1A1A" : "#FFF"} />
+                <rect
+                  width="32"
+                  height="3"
+                  fill={
+                    pathnameToDetermineCertainStylesForDarkAndWhiteModes
+                      ? "#1B1A1A"
+                      : "#FFF"
+                  }
+                />
+                <rect
+                  y="6"
+                  width="32"
+                  height="3"
+                  fill={
+                    pathnameToDetermineCertainStylesForDarkAndWhiteModes
+                      ? "#1B1A1A"
+                      : "#FFF"
+                  }
+                />
+                <rect
+                  y="12"
+                  width="32"
+                  height="3"
+                  fill={
+                    pathnameToDetermineCertainStylesForDarkAndWhiteModes
+                      ? "#1B1A1A"
+                      : "#FFF"
+                  }
+                />
               </svg>
             </button>
           </div>

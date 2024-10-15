@@ -66,12 +66,12 @@ const NFTHero = () => {
   }
 
   return (
-    <header className="container mx-auto flex flex-col items-center">
-      <div className=" lg:w-[1000px] px-4">
+    <div className="container mx-auto flex flex-col items-center">
+      <div className="w-full">
         <h1 className="text-[#1B1A1A] text-[40px] md:text-[54px] font-[500] leading-[52px] lg:leading-[62px] ">
           {item.title}
         </h1>
-        <div className="flex items-center gap-[40px] mt-4 mb-[24px] lg:mt-5 lg:mb-[40px] ">
+        <div className="flex items-center gap-[40px] mt-4 mb-[4px] lg:mt-5 lg:mb-[20px] ">
           <div className="flex items-center gap-2">
             <Image
               alt="Person"
@@ -93,7 +93,7 @@ const NFTHero = () => {
           </div>
         </div>
       </div>
-    </header>
+    </div>
   )
 }
 

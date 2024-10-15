@@ -17,16 +17,16 @@ const ArrowTopRightButton: React.FC<ArrowTopRightButtonProps> = ({
   return (
     <Link
       href={href}
-      className={`text-[18px] font-bold gap-[5px] ${className} group hover:text-[#FFA800] active:text-[#D69416]transition-all duration-300`}
+      className={`text-[18px] font-bold gap-[10px] ${className} group hover:text-[#FFA800] active:text-[#D69416]transition-all duration-300 `}
     >
       {content}{" "}
       <span>
         <svg
-          className="inline mb-1 "
+          className="inline mb-1"
           width="24"
           height="24"
           viewBox="0 0 24 24"
-          fill="none"
+          fill="white"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path

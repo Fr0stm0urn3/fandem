@@ -28,8 +28,6 @@ const AllBlogPosts = () => {
   const [items, setItems] = useState<{ items: Item[] }>({ items: [] })
   const [feed, setFeed] = useState<Feed | null>(null)
   const [loading, setLoading] = useState(true)
-  const [page, setPage] = useState(1)
-  const [pageSize, setPageSize] = useState(9)
   const [activateSearch, setActivateSearch] = useState(false)
 
   const [searchQuery, setSearchQuery] = useState("")
@@ -59,10 +57,6 @@ const AllBlogPosts = () => {
     fetchData()
   }, [])
 
-  const totalPages = Math.ceil(items.items.length / pageSize)
-  const endIndex = page * pageSize
-  const startIndex = endIndex - pageSize
-
   const filterBasedOnCategoryAndSearchTitle = items.items
     .filter((item) => {
       return postCategory ? item.categories.includes(postCategory) : item
@@ -76,15 +70,15 @@ const AllBlogPosts = () => {
   }
 
   return (
-    <section className="container mx-auto flex flex-col items-center">
+    <section className="container mx-auto flex flex-col items-center lg:px-[135px] pb-[100px] lg:pb-[140px]">
       <div>
         <div className="hidden text-black lg:flex justify-between p-4 lg:py-0 mb-[32px] lg:mb-[76px]">
-          <ul className="flex text-[#898888] list-none gap-[46px] px-4">
+          <ul className="flex text-[#898888] list-none gap-[46px] ">
             <li
               onClick={() => setPostCategory("")}
               className={`${
                 postCategory === ""
-                  ? "text-[#1B1A1A] border-b pb-[11px] border-b-[#1B1A1A] "
+                  ? "text-[#1B1A1A] border-b pb-[11px] border-b-[#1B1A1A]"
                   : "hover:border-b hover:pb-[11px] hover:border-b-[#1B1A1A]"
               } cursor-pointer hover:text-[#1B1A1A] hover:scale-105 transition-all`}
             >
@@ -276,87 +270,45 @@ const AllBlogPosts = () => {
         {/* All Cards */}
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-[30px] justify-center min-w-[343.195px] lg:min-w-[370px]">
           {items.items.length > 0 &&
-            filterBasedOnCategoryAndSearchTitle
-              .slice(startIndex, endIndex)
-              .map((item, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col justify-between border border-[#888] rounded-[10px] max-w-[450px] lg:max-w-[372px] hover:brightness-110 transition-all duration-300 hover:scale-105"
-                >
-                  <Link href={`/blog/${item.title.match(/[^?.:%]+/g)}`}>
-                    <DescriptionContainer>
-                      <article
-                        className="text-black flex flex-col justify-between lg:items-center"
-                        dangerouslySetInnerHTML={{
-                          __html: item.content.slice(0, 300).trim() + "...",
-                        }}
-                      ></article>
-                    </DescriptionContainer>
-                  </Link>
-                  <div className="border border-[#DDD] mt-[40px] mb-[13px] mx-[34px]" />
-                  <div className="flex justify-between items-center p-[34px] ">
-                    <div className="flex gap-2 items-center">
-                      <Image
-                        alt="Profile Picture"
-                        width={32}
-                        height={32}
-                        priority
-                        className="rounded-full"
-                        src={feed!.image}
-                      />
-                      <span className="text-[#1B1A1A]">{item.author}</span>
-                    </div>
-                    <span className="text-[#565656]">
-                      {/* {new Date()} {item.pubDate.slice(0, 4)} */}
-                      {new Date(item.pubDate.slice(0, 10)).toLocaleString("default", {
-                        month: "long",
-                      })}{" "}
-                      {new Date(item.pubDate.slice(0, 10)).getDay()},{" "}
-                      {new Date(item.pubDate.slice(0, 10)).getFullYear()}
-                    </span>
+            filterBasedOnCategoryAndSearchTitle.map((item, i) => (
+              <div
+                key={i}
+                className="flex flex-col justify-between border border-[#888] rounded-[10px] max-w-[450px] lg:max-w-[372px] hover:brightness-110 transition-all duration-300 hover:scale-105"
+              >
+                <Link href={`/blog/${item.title.match(/[^?.:%]+/g)}`}>
+                  <DescriptionContainer>
+                    <article
+                      className="text-black flex flex-col justify-between lg:items-center"
+                      dangerouslySetInnerHTML={{
+                        __html: item.content.slice(0, 300).trim() + "...",
+                      }}
+                    ></article>
+                  </DescriptionContainer>
+                </Link>
+                <div className="border border-[#DDD] mt-[40px] mb-[13px] mx-[34px]" />
+                <div className="flex justify-between items-center p-[34px] ">
+                  <div className="flex gap-2 items-center">
+                    <Image
+                      alt="Profile Picture"
+                      width={32}
+                      height={32}
+                      priority
+                      className="rounded-full"
+                      src={feed!.image}
+                    />
+                    <span className="text-[#1B1A1A]">{item.author}</span>
                   </div>
+                  <span className="text-[#565656]">
+                    {/* {new Date()} {item.pubDate.slice(0, 4)} */}
+                    {new Date(item.pubDate.slice(0, 10)).toLocaleString("default", {
+                      month: "long",
+                    })}{" "}
+                    {new Date(item.pubDate.slice(0, 10)).getDay()},{" "}
+                    {new Date(item.pubDate.slice(0, 10)).getFullYear()}
+                  </span>
                 </div>
-              ))}
-        </div>
-        <div className="flex justify-center items-center gap-[18px] text-[#1B1A1A] mt-[80px] mb-[151px]">
-          <button
-            disabled={page === 1}
-            onClick={() => setPage((prev) => prev - 1)}
-            className={`${page === 1 ? "text-gray-400 cursor-not-allowed" : ""}`}
-          >
-            Prev
-          </button>
-          <span
-            onClick={() => setPage(1)}
-            className={`${
-              page === 1 ? "border-b border-b-[#1B1A1A]" : ""
-            } hover-all:scale-110 transition cursor-pointer`}
-          >
-            1
-          </span>
-          <span
-            onClick={() => setPage(2)}
-            className={`${
-              page === 2 ? "border-b border-b-[#1B1A1A]" : ""
-            } hover-all:scale-110 transition cursor-pointer`}
-          >
-            2
-          </span>
-          <span
-            onClick={() => setPage(3)}
-            className={`${
-              page === 3 ? "border-b border-b-[#1B1A1A]" : ""
-            } hover-all:scale-110 transition cursor-pointer`}
-          >
-            3
-          </span>
-          <button
-            disabled={page === totalPages}
-            className={`${page === totalPages ? "text-gray-400 cursor-not-allowed" : ""}`}
-            onClick={() => setPage((prev) => prev + 1)}
-          >
-            Next
-          </button>
+              </div>
+            ))}
         </div>
       </div>
     </section>

@@ -50,7 +50,7 @@ const ContactForm: React.FC = () => {
   return (
     <section
       id="contact"
-      className="container mx-auto flex justify-center xl:justify-end mb-[246px] z-10"
+      className="container mx-auto flex justify-center xl:justify-end mb-[246px] z-10 lg:px-[135px] px-4"
     >
       <div className="w-[470px] z-10">
         <MiniTitle title={"Future Cooperation"} />

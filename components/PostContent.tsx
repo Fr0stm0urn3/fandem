@@ -59,7 +59,7 @@ const PostContent = () => {
   }
 
   return (
-    <section className="container mx-auto text-[#1B1A1A] px-4 flex flex-col items-center justify-center">
+    <section className="container mx-auto text-[#1B1A1A] px-4 flex flex-col items-center justify-center lg:px-[235px]">
       <NFTHero />
       <PostContainer>
         <article dangerouslySetInnerHTML={{ __html: post.content }}></article>

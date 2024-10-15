@@ -51,20 +51,20 @@ const HomePageHero = () => {
   // console.log(items)
 
   useEffect(() => {
-    const interValId = setInterval(() => setIndex((index) => index + 1), 2500)
+    const interValId = setInterval(() => setIndex((index) => index + 1), 250000)
 
     return () => clearTimeout(interValId)
   }, [])
 
   return (
-    <header className="mt-[53px] mb-[243px] md:mt-[171px] md:mb-[353px] flex flex-col  items-center justify-center md:justify-start md:items-start  container mx-auto px-4">
-      <h1 className="text-5xl md:text-6xl font-semibold leading-[57.6px] md:leading-[72px] shadow-md w-[340px] md:w-[570px]  z-10">
+    <div className="mt-[53px] mb-[243px] md:mt-[171px] md:mb-[353px] flex flex-col  items-center justify-center  md:justify-start md:items-start  container mx-auto px-4 lg:px-[135px]">
+      <h1 className="text-5xl md:text-6xl font-semibold leading-[57.6px] md:leading-[72px] shadow-md w-[340px] md:w-[570px] z-10">
         Purpose-built NFT solutions for your{" "}
         <TextTransition springConfig={presets.wobbly} className="text-[#FFA800]">
           {`{${TEXTS[index % TEXTS.length]}}`}
         </TextTransition>
       </h1>
-      <p className="w-[300px] -ml-8 md:ml-0 md:w-[470px] mt-5 mb-10 text-base leading-[27.2px] text-[#BEBEBE] z-10">
+      <p className="w-[300px] -ml-8 md:ml-0 md:w-[485px] mt-5 mb-10 text-base leading-[27.2px] text-[#BEBEBE] z-10 text-[16px]">
         We partner with the most forward-thinking global IP rights owners across sports,
         gaming, and entertainment to create their NFT marketplaces.{" "}
       </p>
@@ -90,7 +90,7 @@ const HomePageHero = () => {
           </svg>
         </span>
       </button>
-    </header>
+    </div>
   )
 }
 

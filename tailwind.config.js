@@ -34,12 +34,20 @@ module.exports = {
         //   xl: "1100px",
         //   "2xl": "1200px",
         // },
+
         screens: {
-          md: "700px",
-          lg: "970px",
-          xl: "1140px",
+          md: "768px",
+          lg: "1024px",
+          xl: "1180px",
           "2xl": "1440px",
+          // "3xl": "1920px",
         },
+        // screens: {
+        //   md: "700px",
+        //   lg: "970px",
+        //   xl: "1140px",
+        //   "2xl": "1440px",
+        // },
       },
     },
   },

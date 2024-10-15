@@ -17,7 +17,7 @@ const BlogPageBackgroundImages = () => {
           width={0}
           src={blogHeroImg}
           priority
-          className="absolute  right-0 top-72 md:top-36  lg:right-0 lg:top-0 -z-10"
+          className="absolute  right-0 top-72 md:top-36  lg:right-[0px] lg:top-10 -z-10"
         />
       </>
     )
