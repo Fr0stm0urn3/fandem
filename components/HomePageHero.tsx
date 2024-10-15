@@ -58,7 +58,7 @@ const HomePageHero = () => {
 
   return (
     <div className="mt-[53px] mb-[243px] md:mt-[171px] md:mb-[353px] flex flex-col  items-center justify-center  md:justify-start md:items-start  container mx-auto px-4 lg:px-[135px]">
-      <h1 className="text-5xl md:text-6xl font-semibold leading-[57.6px] md:leading-[72px] shadow-md w-[340px] md:w-[570px] z-10">
+      <h1 className="text-5xl md:text-6xl font-semibold leading-[57.6px] md:leading-[72px] w-[340px] md:w-[570px] z-10">
         Purpose-built NFT solutions for your{" "}
         <TextTransition springConfig={presets.wobbly} className="text-[#FFA800]">
           {`{${TEXTS[index % TEXTS.length]}}`}
