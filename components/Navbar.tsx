@@ -76,7 +76,7 @@ const Navbar = () => {
           className={`${
             pathnameToDetermineCertainStylesForDarkAndWhiteModes
               ? "bg-[#fff]"
-              : "bg-black"
+              : "bg-[#1b1a1a]"
           }`}
         >
           <div className="container mx-auto flex justify-between items-center pt-8 px-4 lg:px-[135px]">
