@@ -84,7 +84,7 @@ const RelatedArticles = () => {
         {relatedArticles.slice(0, 3).map((item, i) => (
           <div
             key={i}
-            className="flex flex-col justify-between border border-[#888] rounded-[10px] max-w-[372px] hover:brightness-105 hover:scale-105 transition-all duration-300 justify-self-center"
+            className="flex flex-col justify-between border border-[#888] rounded-[10px] max-w-[372px] hover:brightness-105 hover:scale-105 transition-all duration-300 justify-self-center will-change-transform"
           >
             <Link href={`/blog/${item.title.match(/[^?.:%]+/g)}`}>
               <DescriptionContainer>

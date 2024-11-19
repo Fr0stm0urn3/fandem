@@ -273,7 +273,7 @@ const AllBlogPosts = () => {
             filterBasedOnCategoryAndSearchTitle.map((item, i) => (
               <div
                 key={i}
-                className="flex flex-col justify-between border border-[#888] rounded-[10px] max-w-[450px] lg:max-w-[372px] hover:brightness-110 transition-all duration-300 hover:scale-105"
+                className="flex flex-col justify-between border border-[#888] rounded-[10px] max-w-[450px] lg:max-w-[372px] hover:brightness-110 transition-all duration-300 hover:scale-105 will-change-transform"
               >
                 <Link href={`/blog/${item.title.match(/[^?.:%]+/g)}`}>
                   <DescriptionContainer>
