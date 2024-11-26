@@ -69,15 +69,6 @@ const HomePageBackgroundImages = () => {
         />
 
         <Image
-          alt="Circle"
-          sizes="100vw"
-          height={0}
-          width={0}
-          src={circle}
-          priority
-          className="absolute lg:left-0 lg:top-[900px] z-10"
-        />
-        <Image
           alt="Red-Pink Blur"
           sizes="100vw"
           height={0}

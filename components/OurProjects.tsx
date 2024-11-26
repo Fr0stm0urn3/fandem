@@ -3,7 +3,6 @@
 import React from "react"
 import { useState, useRef } from "react"
 import Image from "next/image"
-import boxingImg from "../public/assets/images/BoxingImg.png"
 import MiniTitle from "./MiniTitle"
 import Link from "next/link"
 import cardImg1 from "../public/assets/images/Card 1.png"
@@ -16,9 +15,9 @@ import cardImg7 from "../public/assets/images/Card 7.png"
 import cardImg8 from "../public/assets/images/Card 8.png"
 import cardImg9 from "../public/assets/images/Card 9.png"
 import Slider from "react-slick"
+import { inflate } from "zlib"
 
 const projects = [
-  // { title: "blog", src: boxingImg },
   { title: "Explained, Those are NFTs and how you can invest safely", src: cardImg1 },
   { title: "Explained, Understanding NFTs, A Safe Investment Guide", src: cardImg2 },
   { title: "Explained, NFT Basics, Investing Wisely and Safely", src: cardImg3 },
@@ -35,21 +34,6 @@ const OurProjects = () => {
   const slider = React.useRef<any>(null)
 
   const totalItemsLength = projects.length
-
-  // var settings = {
-  //   dots: false,
-  //   infinite: false,
-  //   speed: 500,
-  //   slidesToShow: 1,
-  //   centerMode: true,
-  //   slidesToScroll: 1,
-  //   arrows: false,
-  //   autoplay: false,
-  //   autoplaySpeed: 8000,
-  //   // nextArrow: <NextArrow />,
-  //   // prevArrow: <PrevArrow />,
-  //   // beforeChange: (current, next) => setImageIndex(next),
-  // }
 
   const settings = {
     arrows: false,
@@ -73,34 +57,38 @@ const OurProjects = () => {
       </h2>
       <div className="w-full h-fit p-8 ">
         <Slider {...settings} className="w-full" ref={slider}>
-          {projects.length > 0 &&
+          {projects &&
+            projects.length > 0 &&
             projects.map((project) => (
               <div
-                className="slider-box flex flex-col justify-center items-center gap-[48px] lg:flex-row  lg:justify-between mx-auto container 2xl:px-[135px] w-full height-full"
+                className="slider-box flex flex-col justify-center items-center gap-[48px] xl:flex-row  xl:justify-between mx-auto container 2xl:px-[135px] w-full height-full"
                 key={project.title ? project.title : "1040fl-124gd5"}
               >
-                <div className="flex flex-col items-center justify-center space-y-4 lg:flex-row lg:gap-6 z-10">
+                <div className="flex flex-col items-center justify-center space-y-4 xl:flex-row xl:gap-6 z-10">
                   <Link
                     href={
                       project.title === "blog" ? project.title : `/blog/${project.title}`
                     }
-                    className="translate-all duration-300 hover:scale-[102%]"
+                    className="translate-all duration-300 hover:scale-[102%] "
                   >
                     <Image
                       alt={project.title ? project.title : "Boxing"}
                       sizes="100vw"
                       width={570}
+                      height={0}
                       src={project.src}
                       priority
                       className={`rounded-2xl mb-[6.3px] z-10`}
                     />
                   </Link>
-                  <span className="lg:self-end flex z-10">
+                  <span className="flex self-center xl:self-end z-10">
                     <button
                       className={`${
                         currItemIndex === 0 ? "cursor-not-allowed" : "cursor-pointer"
                       } group`}
-                      onClick={() => setCurrItemIndex((prev) => prev - 1)}
+                      onClick={() =>
+                        currItemIndex > 0 && setCurrItemIndex((prev) => prev - 1)
+                      }
                       disabled={currItemIndex === 0}
                     >
                       <svg
@@ -143,11 +131,11 @@ const OurProjects = () => {
                           : "cursor-pointer"
                       } group`}
                       onClick={() => {
-                        if (currItemIndex !== totalItemsLength - 1) {
+                        if (currItemIndex < totalItemsLength - 1) {
                           setCurrItemIndex((prev) => prev + 1)
                         }
                       }}
-                      disabled={currItemIndex >= totalItemsLength - 1}
+                      // disabled={currItemIndex <= totalItemsLength - 1}
                     >
                       <svg
                         width="21"
@@ -156,7 +144,7 @@ const OurProjects = () => {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                         onClick={() =>
-                          currItemIndex !== totalItemsLength - 1 &&
+                          currItemIndex < totalItemsLength - 1 &&
                           slider?.current?.slickNext()
                         }
                       >
@@ -176,15 +164,20 @@ const OurProjects = () => {
                   </span>
                 </div>
 
-                <div className="self-start ml-2 md:ml-24 lg:ml-0 lg:self-center z-10">
-                  <h4 className="text-[30px] font-[500]">GLORY Smacks</h4>
-                  <p className=" leading-[27.2px] text-[#BEBEBE] w-[350px] lg:w-[373.9px] mt-3 lg:mt-4 mb-8 lg:mb-10 z-0">
-                    The first full NFT marketplace for a combat sports league, utilizing
-                    the content library from GLORY Kickboxing and K-1.
-                  </p>
-                  <button
+                <div className="self-start ml-2 md:ml-24 lg:ml-0 lg:self-center z-10 lg:flex lg:items-center lg:justify-between lg:gap-4 xl:block">
+                  <div>
+                    <h4 className="text-[30px] font-[500]">GLORY Smacks</h4>
+                    <p className=" leading-[27.2px] text-[#BEBEBE] w-[350px] lg:w-[373.9px] mt-3 lg:mt-4 mb-8 lg:mb-10 z-0">
+                      The first full NFT marketplace for a combat sports league, utilizing
+                      the content library from Artificial Intelligence.
+                    </p>
+                  </div>
+                  <Link
+                    href={
+                      project.title === "blog" ? project.title : `/blog/${project.title}`
+                    }
                     className="flex gap-3 justify-center items-center text-[18px] group font-bold rounded-[10px] py-3 px-6 text-[#1B1A1A] bg-[#FFFFFF]
-                  hover:bg-[#FFA800] hover:text-white active:bg-[#D69516] active:[#fff] transition"
+                  hover:bg-[#FFA800] hover:text-white active:bg-[#D69516] active:[#fff] transition w-fit cursor-pointer text-nowrap"
                   >
                     Learn More
                     <span>
@@ -202,7 +195,7 @@ const OurProjects = () => {
                         />
                       </svg>
                     </span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
