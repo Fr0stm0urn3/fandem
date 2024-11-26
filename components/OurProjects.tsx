@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useEffect } from "react"
 import { useState, useRef } from "react"
 import Image from "next/image"
 import MiniTitle from "./MiniTitle"
@@ -15,9 +15,14 @@ import cardImg7 from "../public/assets/images/Card 7.png"
 import cardImg8 from "../public/assets/images/Card 8.png"
 import cardImg9 from "../public/assets/images/Card 9.png"
 import Slider from "react-slick"
-import { inflate } from "zlib"
+import Spinner from "./Spinner"
 
-const projects = [
+type Projects = {
+  title: string
+  src: string
+}
+
+const projectsDummy: any = [
   { title: "Explained, Those are NFTs and how you can invest safely", src: cardImg1 },
   { title: "Explained, Understanding NFTs, A Safe Investment Guide", src: cardImg2 },
   { title: "Explained, NFT Basics, Investing Wisely and Safely", src: cardImg3 },
@@ -30,8 +35,25 @@ const projects = [
 ]
 
 const OurProjects = () => {
-  const [currItemIndex, setCurrItemIndex] = useState(0)
+  const [projects, setProjects] = useState<Projects[]>([])
+  const [currItemIndex, setCurrItemIndex] = useState<number>(0)
+  const [loading, setLoading] = useState<boolean>(true)
+
   const slider = React.useRef<any>(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        projectsDummy.length > 0 && setProjects(projectsDummy)
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [slider, currItemIndex])
 
   const totalItemsLength = projects.length
 
@@ -44,9 +66,9 @@ const OurProjects = () => {
     slidesToScroll: 1,
   }
 
-  console.log(currItemIndex)
-
-  return (
+  return loading ? (
+    <Spinner loading={loading} />
+  ) : (
     <section
       id="projects"
       className="flex flex-col justify-center items-center mb-[168px] lg:mb-[243px]container mx-auto px-4 z-50 lg:px-[135px]"

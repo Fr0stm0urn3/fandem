@@ -90,7 +90,9 @@ const RelatedArticles = () => {
               <DescriptionContainer>
                 <article
                   className="text-black flex flex-col justify-between items-center"
-                  dangerouslySetInnerHTML={{ __html: item.content.slice(0, 300) }}
+                  dangerouslySetInnerHTML={{
+                    __html: item.content.slice(0, 300).trim() + "...",
+                  }}
                 ></article>
               </DescriptionContainer>
             </Link>

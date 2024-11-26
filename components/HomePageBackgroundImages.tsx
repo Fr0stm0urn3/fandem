@@ -152,7 +152,7 @@ const HomePageBackgroundImages = () => {
           width={0}
           src={rotatedBg}
           priority
-          className="absolute min-w-[600px]  bottom-[1150px] sm:bottom-[1050px] md:bottom-[1000px] sm:max-w-[623px]  left-0   lg:bottom-[630px] lg:max-w-[894.13px] lg:left-0 z-0"
+          className="absolute min-w-[373px]  bottom-[1150px] sm:bottom-[1050px] md:bottom-[1000px] sm:max-w-[623px]  left-0   lg:bottom-[630px] lg:max-w-[894.13px] lg:left-0 z-0"
         />
         {/* <Image
           alt="Retro"
@@ -170,7 +170,7 @@ const HomePageBackgroundImages = () => {
           width={0}
           src={headerFooterImg}
           priority
-          className="absolute top-[4340px] -left-[10%] min-w-[150%] md:min-w-[50%] md:top-[4450px] md:left-[10%] lg:left-[18%] lg:top-auto lg:bottom-[170px] xl:left-[28%] xl:top-auto xl:bottom-[25px] 2xl:left-[30%] z-0"
+          className="absolute top-[4340px] -left-[10%] min-w-[373px] md:min-w-[50%] md:top-[4450px] md:left-[10%] lg:left-[18%] lg:top-auto lg:bottom-[170px] xl:left-[28%] xl:top-auto xl:bottom-[25px] 2xl:left-[30%] z-0"
         />
 
         <Image
